@@ -153,3 +153,22 @@ p {
     color: gray; }
   .bg-dark ul {
     list-style: none; }
+
+@media (max-width: 480px) {
+  header .header-content {
+    padding-top: 50px;
+    padding-bottom: 50px; }
+    header .header-content h1 {
+      font-size: 32px; }
+    header .header-content ul {
+      display: none; }
+  .img-container {
+    display: none; }
+  .navbar {
+    display: none; }
+  #about .container {
+    width: 100%; }
+  #projects .container {
+    width: 100%; }
+  #projects ul {
+    flex-wrap: wrap; } }

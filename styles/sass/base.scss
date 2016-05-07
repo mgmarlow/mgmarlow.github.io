@@ -213,3 +213,45 @@ p {
 		list-style: none;
 	}
 }
+
+
+@media (max-width: 480px) {
+	header {
+		.header-content {
+			padding-top: 50px;
+			padding-bottom: 50px;
+
+			h1 {
+				font-size: 32px;
+			}
+
+			ul {
+				display: none;
+			}
+		}
+	}
+
+	.img-container {
+		display: none;
+	}
+
+	.navbar {
+		display: none;
+	}
+
+	#about {
+		.container {
+			width: 100%;
+		}
+	}
+
+	#projects {
+		.container {
+			width: 100%;
+		}
+
+		ul {
+			flex-wrap: wrap;
+		}
+	}
+}
