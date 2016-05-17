@@ -173,9 +173,18 @@ p {
 				}
 			}
 
+			.source-link {
+				font-size: 18px;
+				text-decoration: underline;
+
+				&:before {
+					content: url('../../img/icon/385-embed2.png');
+				}
+			}
+
 			.site-link {
 				font-size: 18px;
-				text-decoration: underline;				
+				text-decoration: underline;
 
 				&:before {
 					content: url('../../img/icon/204-link.png');
