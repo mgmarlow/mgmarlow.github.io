@@ -130,6 +130,12 @@ p {
         #projects .project .project-container ul li {
           margin-left: 20px;
           margin-right: 5px; }
+      #projects .project .project-container .site-link {
+        font-size: 18px;
+        text-decoration: underline;
+        margin-bottom: 5px; }
+        #projects .project .project-container .site-link:before {
+          content: url("../../img/icon/204-link.png"); }
 
 @media (max-width: 1270px) {
   #about .container {

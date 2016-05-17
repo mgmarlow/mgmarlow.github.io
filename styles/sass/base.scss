@@ -172,6 +172,16 @@ p {
 					margin-right: 5px;
 				}
 			}
+
+			.site-link {
+				font-size: 18px;
+				text-decoration: underline;
+				margin-bottom: 5px;
+
+				&:before {
+					content: url('../../img/icon/204-link.png');
+				}
+			}
 		}
 	}
 }
