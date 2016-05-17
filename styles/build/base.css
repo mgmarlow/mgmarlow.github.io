@@ -132,8 +132,7 @@ p {
           margin-right: 5px; }
       #projects .project .project-container .site-link {
         font-size: 18px;
-        text-decoration: underline;
-        margin-bottom: 5px; }
+        text-decoration: underline; }
         #projects .project .project-container .site-link:before {
           content: url("../../img/icon/204-link.png"); }
 
