@@ -30,32 +30,32 @@
 
 // active
 .navbar {
-  border-bottom: none;
-  transition: all .5s;
+	border-bottom: none;
+	transition: all .5s;
 
-  li a {
-    font-weight: 400;
-    font-size: 18px;
-  }
+	li a {
+		font-weight: 400;
+		font-size: 18px;
+	}
 }
 
 header {
 	position: relative;
-  width: 100%;
-  min-height: auto;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-  -o-background-size: cover;
-  background-position: bottom;
-	background-attachment: fixed;
-  background-image: url('../../img/bg2.jpg');
-  text-align: center;
-  color: white;
+	width: 100%;
+	min-height: auto;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+	-o-background-size: cover;
+	background-position: bottom;
+		background-attachment: fixed;
+	background-image: url('../../img/bg2.jpg');
+	text-align: center;
+	color: white;
 
 	.header-content {
 		position: relative;
-    text-align: center;
+        text-align: center;
 		padding: 100px 15px 100px;
 		width: 100%;
 
@@ -145,7 +145,7 @@ p {
 
 		.project-container {
 			display: flex;
-  		padding: 10px 0 10px 0;
+  			padding: 10px 0 10px 0;
 
 			.img-container {
 				width: 25%;
@@ -169,6 +169,12 @@ p {
 
 				li {
 					margin-left: 20px;
+					margin-right: 5px;
+				}
+			}
+
+			.source-link, .site-link {
+				&:before {
 					margin-right: 5px;
 				}
 			}

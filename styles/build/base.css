@@ -130,6 +130,8 @@ p {
         #projects .project .project-container ul li {
           margin-left: 20px;
           margin-right: 5px; }
+      #projects .project .project-container .source-link:before, #projects .project .project-container .site-link:before {
+        margin-right: 5px; }
       #projects .project .project-container .source-link {
         font-size: 18px;
         text-decoration: underline; }
