@@ -7,6 +7,7 @@ var styleTasks = [];
 gulp.task('sass', function () {
     gulp.src('./styles/sass/**/*.scss')
         .pipe(sass())
+        .pipe(gulp.dest('./styles/build/css/'))
         .pipe(concat('styles.css'))
         .pipe(gulp.dest('./styles/build/'));
 });
