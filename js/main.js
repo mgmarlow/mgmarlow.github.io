@@ -1,14 +1,8 @@
 $(function () {
   'use strict';
-  
-  var navbar = $('nav');
-  var free = false;
-  
-  // Run in case of refresh in middle of page
-  if ($(window).scrollTop() > 0) {
-    navbar.removeClass('docked');
-  }
 
+  var navbar = $('nav');
+  
   $('.scroll-link').click(function (e) {
     e.preventDefault();
     $('html, body').animate({
@@ -17,12 +11,10 @@ $(function () {
   });
 
   $(window).scroll(function () {    
-    if ($(window).scrollTop() > 0 && !free) {
+    if ($(window).scrollTop() > 0) {
       navbar.removeClass('docked');
-      free = true;
     } else {
       navbar.addClass('docked');      
-      free = false; 
     }
   });
 
