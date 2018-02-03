@@ -7,16 +7,27 @@ import { Subject } from 'rxjs/Subject';
 @Component({
   selector: 'app-filters',
   template: `
-    <ul>
-      <li 
-        [ngClass]="{ active: activeTags.includes(tag) }"
-        (click)="toggleActive(tag)"
-        *ngFor="let tag of tags">
-        {{ tag }}
-      </li>
-    </ul>
+    <span
+      class="tag"
+      [ngClass]="{
+        'is-primary': activeTags.includes(tag),
+        'is-white': !activeTags.includes(tag)
+      }"
+      (click)="toggleActive(tag)"
+      *ngFor="let tag of tags">
+      {{ tag }}
+    </span>
   `,
-  styles: []
+  styles: [`
+    span {
+      margin-right: 5px;
+    }
+
+    span:hover {
+      cursor: pointer;
+
+    }
+  `]
 })
 export class FiltersComponent implements OnInit, OnDestroy {
   tags: string[];

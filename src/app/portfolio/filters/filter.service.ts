@@ -11,11 +11,11 @@ export class FilterService {
   activeTags = this._activeTags.asObservable();
 
   toggleActive(tag: Tag) {
-    let tags: Tag[] = this._activeTags.value;
+    const tags: Tag[] = this._activeTags.value;
     const tagIndex = tags.indexOf(tag);
-    tags = tagIndex === -1
+    const newTags = tagIndex === -1
       ? [ ...tags, tag ]
       : [ ...tags.slice(0, tagIndex), ...tags.slice(tagIndex + 1, tags.length) ]
-    this._activeTags.next(tags);
+    this._activeTags.next(newTags);
   }
 }
