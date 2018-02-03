@@ -9,6 +9,16 @@ interface Project {
 
 export const PROJECTS: Project[] = [
   {
+    title: 'Angular Playground',
+    description: `
+    An open source tool for building Angular components quickly and efficiently.
+    `,
+    tech: ['Angular'],
+    codeLink: 'https://github.com/socreate/angular-playground',
+    npm: 'npm install angular-playground',
+    websiteLink: 'http://www.angularplayground.it/'
+  },
+  {
     title: 'Stationery',
     description: `
     A tool for composing letters in the command line.
@@ -43,6 +53,16 @@ export const PROJECTS: Project[] = [
     Collaboration with Nick Preheim.
     `,
     codeLink: 'https://github.com/impixelgames/GooFighters',
-    tech: ['Gamemaker']
+    tech: ['Gamemaker'],
+    websiteLink: 'https://impixelgames.itch.io/goo-fighters'
+  },
+  {
+    title: 'Vehicle Saftey Analysis',
+    description: `
+    Classification methods determined which car factors contribute most towards
+    risk rating. Data provided by UC Irvine Machine Learning Repository.
+    `,
+    tech: ['R', 'Classification', 'Data mining'],
+    codeLink: 'https://github.com/mgmarlow/Safety-Rating-Analysis'
   }
 ];
