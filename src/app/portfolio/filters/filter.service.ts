@@ -6,7 +6,7 @@ import { Tag } from '../../projects.service';
 @Injectable()
 export class FilterService {
   private _activeTags: BehaviorSubject<Tag[]> = new BehaviorSubject<Tag[]>(
-    [ Tag.Article, Tag.Code ]
+    [ Tag.Article, Tag.Code, Tag.Other ]
   );
   activeTags = this._activeTags.asObservable();
 

@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 
 export enum Tag {
   Code = 'code',
-  Article = 'article'
+  Article = 'article',
+  Other = 'other',
+  OpenSource = 'open source'
 }
 
 export interface Project {
@@ -19,6 +21,17 @@ export interface Project {
 @Injectable()
 export class ProjectService {
   projects: Project[] = [
+    {
+      title: 'Angular Meetup Frontend Workflow Talk',
+      description: `
+      I gave a talk at the Angular meetup in Mountain View about frontend workflow
+      and Angular Playground.
+      Video coming soon.
+      `,
+      tags: [Tag.Other],
+      date: new Date('1/24/18'),
+      code: 'https://github.com/mgmarlow/playground-talk-2018'
+    },
     {
       title: 'Be a Happier Programmer with Sed',
       site: 'https://hackernoon.com/be-a-happier-programmer-with-sed-cc540e0b58d3',
@@ -52,7 +65,7 @@ export class ProjectService {
       code: 'https://github.com/socreate/angular-playground',
       npm: 'npm install angular-playground',
       site: 'http://www.angularplayground.it/',
-      tags: [Tag.Code],
+      tags: [Tag.Code, Tag.OpenSource],
       date: new Date('6/1/17')
     },
     {
@@ -64,7 +77,7 @@ export class ProjectService {
       tech: ['node', 'javascript'],
       code: 'https://github.com/mgmarlow/dss',
       npm: 'npm install stationery',
-      tags: [Tag.Code],
+      tags: [Tag.Code, Tag.OpenSource],
       date: new Date('12/24/17')
     },
     {
@@ -98,7 +111,7 @@ export class ProjectService {
       code: 'https://github.com/impixelgames/GooFighters',
       tech: ['Gamemaker'],
       site: 'https://impixelgames.itch.io/goo-fighters',
-      tags: [Tag.Code],
+      tags: [Tag.Code, Tag.OpenSource],
       date: new Date('10/3/16')
     },
     {
@@ -109,7 +122,7 @@ export class ProjectService {
       `,
       tech: ['R', 'Classification', 'Data mining'],
       code: 'https://github.com/mgmarlow/Safety-Rating-Analysis',
-      tags: [Tag.Code],
+      tags: [Tag.Code, Tag.OpenSource],
       date: new Date('5/17/16')
     }
   ];

@@ -1,12 +1,31 @@
 <div class="card">
   <header class="card-header">
-    <p class="card-header-title">{{ project.title }}</p>
+    <p class="card-header-title">
+      {{ project.title }}
+    </p>
+      <div class="tags">
+        <span
+          *ngFor="let tag of project.tags"
+          class="tag is-light is-rounded">
+          {{ tag }}
+        </span>
+      </div>
   </header>
   <div class="card-content">
     <div class="content">{{ project.description }}</div>
   </div>
   <footer class="card-footer">
-    <a *ngIf="project.site" [href]="project.site">Site</a>
-    <a *ngIf="project.code" [href]="project.code">Code</a>
+    <a 
+      class="card-footer-item"
+      *ngIf="project.site"
+      [href]="project.site">
+      <i class="fa fa-external-link"></i>&nbsp;Site
+    </a>
+    <a
+      class="card-footer-item"
+      *ngIf="project.code"
+      [href]="project.code">
+      <i class="fa fa-code"></i>&nbsp;Code
+    </a>
   </footer>
 </div>
