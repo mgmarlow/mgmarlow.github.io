@@ -1,0 +1,12 @@
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title">{{ project.title }}</p>
+  </header>
+  <div class="card-content">
+    <div class="content">{{ project.description }}</div>
+  </div>
+  <footer class="card-footer">
+    <a *ngIf="project.site" [href]="project.site">Site</a>
+    <a *ngIf="project.code" [href]="project.code">Code</a>
+  </footer>
+</div>

@@ -9,6 +9,7 @@ import { ProjectTableComponent } from './portfolio/project-table/project-table.c
 import { FiltersComponent } from './portfolio/filters/filters.component';
 import { FilterService } from './portfolio/filters/filter.service';
 import { TagPipe } from './portfolio/filters/tag.pipe';
+import { ProjectCardComponent } from './portfolio/project-table/project-card/project-card.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { TagPipe } from './portfolio/filters/tag.pipe';
     PortfolioComponent,
     ProjectTableComponent,
     FiltersComponent,
-    TagPipe
+    TagPipe,
+    ProjectCardComponent
   ],
   imports: [
     BrowserModule

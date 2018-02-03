@@ -4,16 +4,13 @@ import { Project } from '../../projects.service';
 @Component({
   selector: 'app-project-table',
   template: `
-    <div *ngFor="let project of projects">{{ project.title }}</div>
+    <app-project-card
+      *ngFor="let project of projects"
+      [project]="project">
+    </app-project-card>
   `,
   styles: []
 })
-export class ProjectTableComponent implements OnInit {
+export class ProjectTableComponent {
   @Input() projects: Project[];
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 }
