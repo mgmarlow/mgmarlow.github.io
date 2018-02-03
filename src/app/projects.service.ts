@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
 export enum Tag {
-  Article = 'article',
-  Code = 'code'
+  Code = 'code',
+  Article = 'article'
 }
 
 export interface Project {
