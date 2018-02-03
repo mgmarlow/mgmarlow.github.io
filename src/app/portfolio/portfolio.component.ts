@@ -1,19 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs/Subject';
-import { ProjectService, Project } from '../projects.service';
+import { ProjectService, Project, Tag } from '../projects.service';
 import { FilterService } from './filters/filter.service';
 
 @Component({
   selector: 'app-portfolio',
   template: `
     <app-filters></app-filters>
-    <app-project-table></app-project-table>
+    <app-project-table [projects]="projects | tag:activeTags"></app-project-table>
   `,
   styles: []
 })
 export class PortfolioComponent implements OnInit {
-  filteredProjects: Project[];
+  projects: Project[];
+  activeTags: Tag[];
 
   private onDestroy = new Subject<void>();
 
@@ -23,15 +24,12 @@ export class PortfolioComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.projects = [ ...this.projectService.projects ];
     this.filterService.activeTags
       .pipe(
         takeUntil(this.onDestroy)
       )
-      .subscribe(activeTags => {
-        this.filteredProjects = this.projectService.projects
-          .filter(projects => projects.tags
-            .find(tag => activeTags.includes(tag)) !== undefined);
-      });
+      .subscribe(activeTags => this.activeTags = activeTags);
   }
 
   ngOnDestroy() {

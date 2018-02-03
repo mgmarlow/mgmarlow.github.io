@@ -21,11 +21,12 @@ import { Subject } from 'rxjs/Subject';
   styles: [`
     span {
       margin-right: 5px;
+      -moz-user-select: none;
+      user-select: none;
     }
 
     span:hover {
       cursor: pointer;
-
     }
   `]
 })
