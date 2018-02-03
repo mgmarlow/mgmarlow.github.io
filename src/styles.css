@@ -8,3 +8,14 @@ app-root {
 #root {
   flex: 1 0 auto;
 }
+
+.container, app-footer {
+  z-index: 100;
+}
+
+.particles-js-canvas-el {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 0;
+}
