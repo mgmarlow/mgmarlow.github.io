@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 
-export type Tag = 'article' | 'code';
+export enum Tag {
+  Article = 'article',
+  Code = 'code'
+}
 
 export interface Project {
   title: string;
@@ -14,30 +17,30 @@ export interface Project {
 }
 
 @Injectable()
-export class ProjectsService {
+export class ProjectService {
   projects: Project[] = [
     {
       title: 'Be a Happier Programmer with Sed',
       site: 'https://hackernoon.com/be-a-happier-programmer-with-sed-cc540e0b58d3',
-      tags: ['article'],
+      tags: [Tag.Article],
       date: new Date('1/23/18')
     },
     {
       title: 'Front End Workflow: Re-envisioned',
       site: 'https://hackernoon.com/front-end-workflow-re-envisioned-43f800bb01bd',
-      tags: ['article'],
+      tags: [Tag.Article],
       date: new Date('11/11/17')
     },
     {
       title: 'Creating Interfaces for Angular Services',
       site: 'https://hackernoon.com/creating-interfaces-for-angular-services-1bb41fbbe47c',
-      tags: ['article'],
+      tags: [Tag.Article],
       date: new Date('10/1/17')
     },
     {
       title: 'Creating Adaptable Data Stores in Angular',
       site: 'https://hackernoon.com/creating-adaptable-data-stores-in-angular-38df2d22b5c',
-      tags: ['article'],
+      tags: [Tag.Article],
       date: new Date('9/2/17')
     },
     {
@@ -49,7 +52,7 @@ export class ProjectsService {
       code: 'https://github.com/socreate/angular-playground',
       npm: 'npm install angular-playground',
       site: 'http://www.angularplayground.it/',
-      tags: ['code'],
+      tags: [Tag.Code],
       date: new Date('6/1/17')
     },
     {
@@ -61,7 +64,7 @@ export class ProjectsService {
       tech: ['node', 'javascript'],
       code: 'https://github.com/mgmarlow/dss',
       npm: 'npm install stationery',
-      tags: ['code'],
+      tags: [Tag.Code],
       date: new Date('12/24/17')
     },
     {
@@ -71,7 +74,7 @@ export class ProjectsService {
       `,
       tech: ['Angular', 'C#, .NET Core', `Oracle`],
       site: 'https://www.iqms.com',
-      tags: ['code'],
+      tags: [Tag.Code],
       date: new Date('6/1/16')
     },
     {
@@ -82,7 +85,7 @@ export class ProjectsService {
       `,
       tech: ['React', 'HighCharts', 'C# MVC', 'SQL Server'],
       site: 'https://energydashboard.com/',
-      tags: ['code'],
+      tags: [Tag.Code],
       date: new Date('6/1/15')
     },
     {
@@ -95,7 +98,7 @@ export class ProjectsService {
       code: 'https://github.com/impixelgames/GooFighters',
       tech: ['Gamemaker'],
       site: 'https://impixelgames.itch.io/goo-fighters',
-      tags: ['code'],
+      tags: [Tag.Code],
       date: new Date('10/3/16')
     },
     {
@@ -106,7 +109,7 @@ export class ProjectsService {
       `,
       tech: ['R', 'Classification', 'Data mining'],
       code: 'https://github.com/mgmarlow/Safety-Rating-Analysis',
-      tags: ['code'],
+      tags: [Tag.Code],
       date: new Date('5/17/16')
     }
   ];

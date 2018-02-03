@@ -3,17 +3,27 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { ProjectsService } from './projects.service';
+import { ProjectService } from './projects.service';
+import { PortfolioComponent } from './portfolio/portfolio.component';
+import { ProjectTableComponent } from './portfolio/project-table/project-table.component';
+import { FiltersComponent } from './portfolio/filters/filters.component';
+import { FilterService } from './portfolio/filters/filter.service';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PortfolioComponent,
+    ProjectTableComponent,
+    FiltersComponent
   ],
   imports: [
     BrowserModule
   ],
-  providers: [ProjectsService],
+  providers: [
+    ProjectService,
+    FilterService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
