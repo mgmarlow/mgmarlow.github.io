@@ -10,6 +10,7 @@ import { FiltersComponent } from './portfolio/filters/filters.component';
 import { FilterService } from './portfolio/filters/filter.service';
 import { TagPipe } from './portfolio/filters/tag.pipe';
 import { ProjectCardComponent } from './portfolio/project-table/project-card/project-card.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ProjectCardComponent } from './portfolio/project-table/project-card/pro
     ProjectTableComponent,
     FiltersComponent,
     TagPipe,
-    ProjectCardComponent
+    ProjectCardComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule
