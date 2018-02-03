@@ -123,7 +123,7 @@ export class ProjectService {
       tech: ['R', 'Classification', 'Data mining'],
       code: 'https://github.com/mgmarlow/Safety-Rating-Analysis',
       tags: [Tag.Code, Tag.OpenSource],
-      date: new Date('5/17/16')
+      date: new Date('5/17/15')
     }
   ];
 }

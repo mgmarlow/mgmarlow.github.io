@@ -1,0 +1,9 @@
+<ng-container *ngFor="let project of projects; let colIndex = index">
+  <div class="columns" *ngIf="colIndex % 3 === 0">
+    <app-project-card
+      *ngFor="let project of projects | slice:colIndex:colIndex+3; let i = index"
+      class="column"
+      [project]="projects[i + colIndex]">
+    </app-project-card>
+  </div> 
+</ng-container>

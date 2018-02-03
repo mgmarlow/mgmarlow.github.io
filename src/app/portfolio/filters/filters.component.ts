@@ -6,18 +6,7 @@ import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'app-filters',
-  template: `
-    <span
-      class="tag"
-      [ngClass]="{
-        'is-primary': activeTags.includes(tag),
-        'is-white': !activeTags.includes(tag)
-      }"
-      (click)="toggleActive(tag)"
-      *ngFor="let tag of tags">
-      {{ tag }}
-    </span>
-  `,
+  templateUrl: './filters.component.html',
   styles: [`
     span {
       margin-right: 5px;

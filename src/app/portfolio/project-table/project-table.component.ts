@@ -3,12 +3,7 @@ import { Project } from '../../projects.service';
 
 @Component({
   selector: 'app-project-table',
-  template: `
-    <app-project-card
-      *ngFor="let project of projects"
-      [project]="project">
-    </app-project-card>
-  `,
+  templateUrl: './project-table.component.html',
   styles: []
 })
 export class ProjectTableComponent {

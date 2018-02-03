@@ -6,10 +6,7 @@ import { FilterService } from './filters/filter.service';
 
 @Component({
   selector: 'app-portfolio',
-  template: `
-    <app-filters></app-filters>
-    <app-project-table [projects]="projects | tag:activeTags"></app-project-table>
-  `,
+  templateUrl: './portfolio.component.html',
   styles: []
 })
 export class PortfolioComponent implements OnInit {
@@ -24,7 +21,9 @@ export class PortfolioComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.projects = [ ...this.projectService.projects ];
+    this.projects = [ ...this.projectService.projects ]
+      .sort((a, b) => b.date.getTime() - a.date.getTime());
+
     this.filterService.activeTags
       .pipe(
         takeUntil(this.onDestroy)
