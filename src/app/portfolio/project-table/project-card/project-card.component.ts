@@ -16,7 +16,7 @@ export class ProjectCardComponent {
 
   constructor(private filterService: FilterService) {}
 
-  setTag(tag: Tag) {
-    this.filterService.setActiveTag(tag);
+  setTag(tag: string) {
+    this.filterService.setActiveTag(tag as Tag);
   }
 }
