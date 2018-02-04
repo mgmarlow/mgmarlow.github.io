@@ -20,14 +20,14 @@
   <footer class="card-footer">
     <a 
       class="card-footer-item"
-      *ngIf="project.site && !project.tags.includes('article')"
+      *ngIf="project.site && !project.tags.includes(Tag.Article)"
       [href]="project.site">
       <i class="fa fa-external-link"></i>
       &nbsp;Homepage
     </a>
     <a 
       class="card-footer-item"
-      *ngIf="project.tags.includes('article')"
+      *ngIf="project.tags.includes(Tag.Article)"
       [href]="project.site">
       <i class="fa fa-file-text"></i>
       &nbsp;View Article

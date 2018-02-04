@@ -13,6 +13,7 @@ import { FilterService } from '../../filters/filter.service';
 })
 export class ProjectCardComponent {
   @Input() project: Project
+  Tag = Tag;
 
   constructor(private filterService: FilterService) {}
 
