@@ -36,25 +36,56 @@ export class ProjectService {
       title: 'Be a Happier Programmer with Sed',
       site: 'https://hackernoon.com/be-a-happier-programmer-with-sed-cc540e0b58d3',
       tags: [Tag.Article],
-      date: new Date('1/23/18')
+      date: new Date('1/23/18'),
+      description: `
+      Okay, I will admit that is a bit of a contentious title. However, after this classic 
+      command line utility saved me hours of repetitive work I felt it needed to be said.
+      In the earlier days of TypeScript, string enums did not exist. There were, however,
+      several different workarounds that accomplished a similar goal. The variant that
+      my company used internally involved creating a class with a number of static getters
+      that returned string values.`
     },
     {
       title: 'Front End Workflow: Re-envisioned',
       site: 'https://hackernoon.com/front-end-workflow-re-envisioned-43f800bb01bd',
       tags: [Tag.Article],
-      date: new Date('11/11/17')
+      date: new Date('11/11/17'),
+      description: `
+      As front end development embraces component-centered design, so should the
+      approach towards constructing user interfaces. Two years ago Thinking in React
+      changed the way I design user interfaces. To put it lamely, it made designing
+      UI more programmer-friendly: divide a chunk of UI into pieces, approach each
+      piece individually as stateless markup, and add logic only after the whole structure is finished.
+      `
     },
     {
       title: 'Creating Interfaces for Angular Services',
       site: 'https://hackernoon.com/creating-interfaces-for-angular-services-1bb41fbbe47c',
       tags: [Tag.Article],
-      date: new Date('10/1/17')
+      date: new Date('10/1/17'),
+      description: `
+      When dealing with a class that needs access to different data sources depending on its
+      context, it is often useful to model those data sources with a common interface.
+      Likewise in Angular, we may run across situations where an injected service needs to
+      have different implementations depending on its context, a perfect candidate for an
+      interface. However, since interfaces are not compiled into the JavaScript output of
+      TypeScript, achieving this with an Angular service is rather unintuitive.
+      `
     },
     {
       title: 'Creating Adaptable Data Stores in Angular',
       site: 'https://hackernoon.com/creating-adaptable-data-stores-in-angular-38df2d22b5c',
       tags: [Tag.Article],
-      date: new Date('9/2/17')
+      date: new Date('9/2/17'),
+      description: `
+      One of the most interesting issues addressed during application development is managing
+      state. New paradigms have changed the way web applications deal with and manipulate their
+      state, deviating from the two-way data binding mechanisms of AngularJS to a more functional
+      uni-directional flow with React and Redux. Now that Angular has been out for a while and
+      is approaching “stability”, the same questions arise on how to best manage application state.
+      Sending and manipulating data through @Input bindings and @Output events can works great for
+      small applications but quickly becomes unwieldy as an application grows.
+      `
     },
     {
       title: 'Angular Playground',

@@ -11,6 +11,7 @@ import { FilterService } from './portfolio/filters/filter.service';
 import { TagPipe } from './portfolio/filters/tag.pipe';
 import { ProjectCardComponent } from './portfolio/project-table/project-card/project-card.component';
 import { FooterComponent } from './footer/footer.component';
+import { MaxCharPipe } from './portfolio/project-table/project-card/max-char.pipe';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { FooterComponent } from './footer/footer.component';
     FiltersComponent,
     TagPipe,
     ProjectCardComponent,
-    FooterComponent
+    FooterComponent,
+    MaxCharPipe
   ],
   imports: [
     BrowserModule
