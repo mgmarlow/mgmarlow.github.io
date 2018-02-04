@@ -6,6 +6,7 @@
       <div class="tags">
         <span
           *ngFor="let tag of project.tags"
+          (click)="setTag(tag)"
           class="tag is-light is-rounded">
           {{ tag }}
         </span>

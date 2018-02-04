@@ -18,4 +18,8 @@ export class FilterService {
       : [ ...tags.slice(0, tagIndex), ...tags.slice(tagIndex + 1, tags.length) ]
     this._activeTags.next(newTags);
   }
+
+  setActiveTag(tag: Tag) {
+    this._activeTags.next([ tag ]);
+  }
 }
