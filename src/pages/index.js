@@ -17,8 +17,8 @@ function PostLink({ node }) {
 function IndexPage({ data }) {
   const { edges } = data.allMarkdownRemark
 
-  const posts = edges.map(({ node }) => (
-    <li>
+  const posts = edges.map(({ node }, i) => (
+    <li key={i}>
       <PostLink node={node} />
     </li>
   ))
