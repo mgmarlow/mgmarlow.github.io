@@ -5,11 +5,9 @@ import styles from './header.module.css'
 
 const Header = ({ siteTitle }) => (
   <header>
-    <h2>
-      <Link to="/" className={styles.link}>
-        {siteTitle}
-      </Link>
-    </h2>
+    <Link to="/" className={styles.link}>
+      {siteTitle}
+    </Link>
   </header>
 )
 

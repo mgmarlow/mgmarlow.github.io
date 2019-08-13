@@ -1,0 +1,39 @@
+.content {
+  text-align: center;
+}
+
+.leftLink {
+  margin-right: 1rem;
+}
+.leftLink::before {
+  content: '\2190 ';
+}
+
+.rightLink {
+  margin-left: 1rem;
+}
+.rightLink::after {
+  content: ' \2192';
+}
+
+.footer {
+  margin-top: 2rem;
+}
+
+.mobileHeader {
+  margin: 0.75rem 0;
+}
+
+@media (max-width: 600px) {
+  .leftLink,
+  .rightLink {
+    margin: 0.5rem 0 0 0;
+    display: block;
+    text-align: left;
+  }
+
+  .leftLink::before,
+  .rightLink::after {
+    content: none;
+  }
+}

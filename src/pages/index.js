@@ -2,15 +2,16 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
+import styles from './index.module.css'
 
 function PostLink({ node }) {
   const { frontmatter } = node
 
   return (
-    <Link to={frontmatter.path}>
-      <span>{frontmatter.date}</span>
-      {frontmatter.title}
-    </Link>
+    <>
+      <span className={styles.date}>{frontmatter.date}</span>
+      <Link to={frontmatter.path}>{frontmatter.title}</Link>
+    </>
   )
 }
 
@@ -26,7 +27,7 @@ function IndexPage({ data }) {
   return (
     <Layout>
       <SEO title="Home" />
-      <ul>{posts}</ul>
+      <ul className={styles.list}>{posts}</ul>
     </Layout>
   )
 }

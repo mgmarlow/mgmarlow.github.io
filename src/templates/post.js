@@ -2,6 +2,8 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import Footer from '../components/footer'
+import SEO from '../components/seo'
+import styles from './post.module.css'
 
 function Template({ data, pageContext }) {
   const title = data.markdownRemark.frontmatter.title
@@ -10,15 +12,20 @@ function Template({ data, pageContext }) {
   const { prev, next } = pageContext
 
   return (
-    <Layout>
-      <article>
-        <section>
-          <h1>{title}</h1>
-          <div dangerouslySetInnerHTML={{ __html: html }}></div>
-        </section>
-        <Footer prev={prev} next={next} />
-      </article>
-    </Layout>
+    <>
+      <SEO title={title} />
+
+      <Layout>
+        <article>
+          <section>
+            <h1>{title}</h1>
+            <div dangerouslySetInnerHTML={{ __html: html }}></div>
+          </section>
+        </article>
+
+        <Footer className={styles.footer} prev={prev} next={next} />
+      </Layout>
+    </>
   )
 }
 
