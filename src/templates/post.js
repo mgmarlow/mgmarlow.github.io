@@ -22,14 +22,13 @@ function Template({ data, pageContext }) {
           <section>
             <div className={styles.titleWrapper}>
               <h1 className={styles.title}>{title}</h1>
-              <time datetime={datetime}>{date}</time>
+              <time dateTime={datetime}>{date}</time>
             </div>
             <div dangerouslySetInnerHTML={{ __html: html }}></div>
           </section>
         </article>
-
-        <Footer className={styles.footer} prev={prev} next={next} />
       </Layout>
+      <Footer className={styles.footer} prev={prev} next={next} />
     </>
   )
 }

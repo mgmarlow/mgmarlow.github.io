@@ -1,16 +1,22 @@
+.wrapper {
+  max-width: 800px;
+}
+
 .content {
   text-align: center;
 }
 
 .leftLink {
-  margin-right: 1rem;
+  margin: 1rem;
+  float: left;
 }
 .leftLink::before {
   content: '\2190 ';
 }
 
 .rightLink {
-  margin-left: 1rem;
+  margin: 1rem;
+  float: right;
 }
 .rightLink::after {
   content: ' \2192';
@@ -25,9 +31,15 @@
 }
 
 @media (max-width: 600px) {
+  .wrapper {
+    width: calc(100% - 40px);
+    max-width: 600px;
+  }
+
   .leftLink,
   .rightLink {
     margin: 0.5rem 0 0 0;
+    float: none;
     display: block;
     text-align: left;
   }

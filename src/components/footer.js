@@ -1,11 +1,12 @@
 import React from 'react'
+import classnames from 'classnames'
 import Media from 'react-media'
 import { Link } from 'gatsby'
 import styles from './footer.module.css'
 
 function Footer({ className, prev, next }) {
   return (
-    <footer className={className}>
+    <footer className={classnames(className, styles.wrapper)}>
       <Media query="(max-width: 600px)">
         {matches =>
           matches && <h4 className={styles.mobileHeader}>Other Articles</h4>

@@ -4,14 +4,16 @@
 html,
 body {
   background-color: #ffffff;
+  font-feature-settings: 'kern' 1;
+  font-kerning: normal;
 }
 
 body,
 html,
 p,
 a,
-span,
 time {
+  color: #333;
   font-family: 'IBM Plex Serif', Georgia, 'Times New Roman', Times, serif;
   font-weight: 400;
   font-style: normal;
@@ -30,7 +32,7 @@ h6 {
 
 pre,
 code {
-  font-family: 'Source Code Pro', monospace;
+  font-family: 'Source Code Pro', 'Courier New', Courier, monospace;
   font-weight: 400;
   font-style: normal;
 }
@@ -64,10 +66,16 @@ h6 {
   font-size: 1rem;
 }
 
-p {
+p,
+li,
+a {
   color: #333333;
   line-height: 1.45;
   font-size: 1.15rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
 }
 
 a {
@@ -77,4 +85,28 @@ a {
 
 a:hover {
   text-decoration: none;
+}
+
+blockquote {
+  margin: 1rem;
+  padding-left: 1rem;
+  border-left: 5px solid #828282;
+}
+
+blockquote > p {
+  color: #828282;
+}
+
+/* 
+ * Taken from the gatsby guide:
+ * https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-remark-prismjs
+*/
+.gatsby-highlight-code-line {
+  background-color: #feb;
+  display: block;
+  margin-right: -1em;
+  margin-left: -1em;
+  padding-right: 1em;
+  padding-left: 0.75em;
+  border-left: 0.25em solid #f99;
 }
