@@ -1,4 +1,5 @@
 import React from 'react'
+import Media from 'react-media'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
@@ -8,10 +9,21 @@ function PostLink({ node }) {
   const { frontmatter } = node
 
   return (
-    <>
-      <span className={styles.date}>{frontmatter.date}</span>
-      <Link to={frontmatter.path}>{frontmatter.title}</Link>
-    </>
+    <Media query="(max-width: 600px)">
+      {matches =>
+        matches ? (
+          <div className={styles.listItem}>
+            <Link to={frontmatter.path}>{frontmatter.title}</Link>
+            <div>{frontmatter.date}</div>
+          </div>
+        ) : (
+          <>
+            <span className={styles.date}>{frontmatter.date}</span>
+            <Link to={frontmatter.path}>{frontmatter.title}</Link>
+          </>
+        )
+      }
+    </Media>
   )
 }
 

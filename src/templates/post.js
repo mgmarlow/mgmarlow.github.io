@@ -7,6 +7,8 @@ import styles from './post.module.css'
 
 function Template({ data, pageContext }) {
   const title = data.markdownRemark.frontmatter.title
+  const date = data.markdownRemark.frontmatter.date
+  const datetime = data.markdownRemark.frontmatter.datetime
   const html = data.markdownRemark.html
 
   const { prev, next } = pageContext
@@ -18,7 +20,10 @@ function Template({ data, pageContext }) {
       <Layout>
         <article>
           <section>
-            <h1>{title}</h1>
+            <div className={styles.titleWrapper}>
+              <h1 className={styles.title}>{title}</h1>
+              <time datetime={datetime}>{date}</time>
+            </div>
             <div dangerouslySetInnerHTML={{ __html: html }}></div>
           </section>
         </article>
@@ -35,6 +40,8 @@ export const query = graphql`
       html
       frontmatter {
         title
+        date(formatString: "MMM. DD, YYYY")
+        datetime: date(formatString: "YYYY-MM-DD")
       }
     }
   }
