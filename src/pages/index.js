@@ -38,7 +38,7 @@ function IndexPage({ data }) {
 
   return (
     <Layout>
-      <SEO title="Home" />
+      <SEO title="Articles" />
       <ul className={styles.list}>{posts}</ul>
     </Layout>
   )
