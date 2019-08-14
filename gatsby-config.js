@@ -3,6 +3,7 @@ module.exports = {
   siteMetadata: {
     title: `archive`,
     description: `The writings of Graham Marlow.`,
+    siteUrl: `https://mgmarlow.github.io/blog`,
   },
   plugins: [
     {
@@ -28,6 +29,7 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

@@ -40,6 +40,11 @@ function IndexPage({ data }) {
     <Layout>
       <SEO title="Articles" />
       <ul className={styles.list}>{posts}</ul>
+      <footer>
+        <a href="https://mgmarlow.github.io">about</a> •{' '}
+        <a href="https://github.com/mgmarlow">github</a> •{' '}
+        <Link to="/rss.xml">rss</Link>
+      </footer>
     </Layout>
   )
 }
