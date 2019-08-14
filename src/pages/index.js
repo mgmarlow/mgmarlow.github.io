@@ -43,7 +43,13 @@ function IndexPage({ data }) {
       <footer>
         <a href="https://mgmarlow.github.io">about</a> •{' '}
         <a href="https://github.com/mgmarlow">github</a> •{' '}
-        <Link to="/rss.xml">rss</Link>
+        <a
+          href="https://mgmarlow.github.io/blog/rss.xml"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          rss
+        </a>
       </footer>
     </Layout>
   )
