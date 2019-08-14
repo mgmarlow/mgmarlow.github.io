@@ -74,6 +74,12 @@ a {
   font-size: 1.15rem;
 }
 
+pre,
+code,
+code.language-text {
+  font-size: 1rem;
+}
+
 li {
   margin-bottom: 0.5rem;
 }
@@ -101,7 +107,7 @@ blockquote > p {
  * Taken from the gatsby guide:
  * https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-remark-prismjs
 */
-.gatsby-highlight-code-line {
+/* .gatsby-highlight-code-line {
   background-color: #feb;
   display: block;
   margin-right: -1em;
@@ -109,4 +115,4 @@ blockquote > p {
   padding-right: 1em;
   padding-left: 0.75em;
   border-left: 0.25em solid #f99;
-}
+} */
