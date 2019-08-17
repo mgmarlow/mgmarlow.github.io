@@ -11626,6 +11626,16 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
+typeface-ibm-plex-serif@^0.0.75:
+  version "0.0.75"
+  resolved "https://registry.yarnpkg.com/typeface-ibm-plex-serif/-/typeface-ibm-plex-serif-0.0.75.tgz#7f93b410c712ba86c508f5d4727649a9c404ddcf"
+  integrity sha512-pic/O3Z8wKjik6Tnin5KaiE+mFIAOI5Jn4EiF/FtxR42Fsmo6ZRWjJQN71FWXIWK4Miiu/UjhsFvJScpf2F2sw==
+
+typeface-source-code-pro@^0.0.71:
+  version "0.0.71"
+  resolved "https://registry.yarnpkg.com/typeface-source-code-pro/-/typeface-source-code-pro-0.0.71.tgz#30994f73aed203feb7d616937349bccf656c45a5"
+  integrity sha512-lBpRNuC/wLFVjeFpH1qAby5iTG1jggQFBGteB+kDlMDAlpfguGPj8X0ObXK8xKiAl98+WkGbkumc14AckHr0mQ==
+
 ua-parser-js@^0.7.18:
   version "0.7.20"
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.20.tgz#7527178b82f6a62a0f243d1f94fd30e3e3c21098"

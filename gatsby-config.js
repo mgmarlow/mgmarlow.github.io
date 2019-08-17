@@ -24,6 +24,7 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
       options: {
+        // TODO: https://www.gatsbyjs.org/packages/gatsby-remark-images/
         plugins: [`gatsby-remark-prismjs`],
       },
     },

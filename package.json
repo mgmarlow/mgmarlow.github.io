@@ -22,7 +22,9 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
-    "react-media": "^1.9.2"
+    "react-media": "^1.9.2",
+    "typeface-ibm-plex-serif": "^0.0.75",
+    "typeface-source-code-pro": "^0.0.71"
   },
   "devDependencies": {
     "gh-pages": "^2.1.1",
