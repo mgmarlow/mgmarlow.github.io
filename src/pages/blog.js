@@ -39,7 +39,9 @@ function Blog({ data }) {
   return (
     <Layout>
       <SEO title="Articles" />
+
       <ul className={styles.list}>{posts}</ul>
+
       <footer>
         <Link to="/">about</Link> •{' '}
         <a rel="noreferrer" href="https://github.com/mgmarlow">

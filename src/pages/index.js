@@ -30,7 +30,7 @@ const About = () => {
         </p>
         <p className={styles.paragraph}>
           Sometimes I write technical articles and publish them on my{' '}
-          <Link className={styles.link} to="/blog">
+          <Link className={styles.link} to="/blog/">
             blog
           </Link>
           .
