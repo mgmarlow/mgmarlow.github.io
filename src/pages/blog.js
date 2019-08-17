@@ -47,7 +47,7 @@ function Blog({ data }) {
         </a>{' '}
         •{' '}
         <a
-          href="https://mgmarlow.github.io/blog/rss.xml"
+          href="https://mgmarlow.github.io/rss.xml"
           target="_blank"
           rel="noopener noreferrer"
         >

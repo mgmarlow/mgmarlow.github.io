@@ -35,7 +35,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "deploy": "yarn run build && gh-pages -d public",
+    "deploy": "yarn run build && gh-pages -d public -b master",
     "build": "gatsby build --prefix-paths",
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
