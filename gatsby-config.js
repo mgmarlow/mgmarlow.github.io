@@ -1,9 +1,9 @@
 module.exports = {
-  pathPrefix: '/blog',
+  pathPrefix: '/',
   siteMetadata: {
     title: `archive`,
     description: `The writings of Graham Marlow.`,
-    siteUrl: `https://mgmarlow.github.io/blog`,
+    siteUrl: `https://mgmarlow.github.io/`,
   },
   plugins: [
     {
@@ -36,7 +36,7 @@ module.exports = {
       options: {
         name: `Graham Marlow's Blog`,
         short_name: `archive`,
-        start_url: `/blog`,
+        start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,

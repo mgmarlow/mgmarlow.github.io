@@ -1,74 +1,35 @@
 import React from 'react'
-import Media from 'react-media'
-import { graphql, Link } from 'gatsby'
-import Layout from '../components/layout'
+import { Link } from 'gatsby'
 import SEO from '../components/seo'
 import styles from './index.module.css'
 
-function PostLink({ node }) {
-  const { frontmatter } = node
-
+const About = () => {
   return (
-    <Media query="(max-width: 600px)">
-      {matches =>
-        matches ? (
-          <div className={styles.listItem}>
-            <Link to={frontmatter.path}>{frontmatter.title}</Link>
-            <div>{frontmatter.date}</div>
-          </div>
-        ) : (
-          <>
-            <span className={styles.date}>{frontmatter.date}</span>
-            <Link to={frontmatter.path}>{frontmatter.title}</Link>
-          </>
-        )
-      }
-    </Media>
+    <div className={styles.container}>
+      <SEO title="Graham Marlow" excludeTemplate={true} />
+      <article>
+        <h2>Graham Marlow</h2>
+        <p>
+          I am a software engineer currently working at{' '}
+          <a rel="noreferrer" href="https://mindbody.io">
+            MINDBODY
+          </a>
+          . You can find many of my open source contributions on{' '}
+          <a rel="noreferrer" href="https://github.com/mgmarlow">
+            Github
+          </a>
+          .
+        </p>
+        <p>
+          Sometimes I write technical articles and publish them on my{' '}
+          <Link className={styles.emphasisLink} to="/blog">
+            blog
+          </Link>
+          .
+        </p>
+      </article>
+    </div>
   )
 }
 
-function IndexPage({ data }) {
-  const { edges } = data.allMarkdownRemark
-
-  const posts = edges.map(({ node }, i) => (
-    <li key={i}>
-      <PostLink node={node} />
-    </li>
-  ))
-
-  return (
-    <Layout>
-      <SEO title="Articles" />
-      <ul className={styles.list}>{posts}</ul>
-      <footer>
-        <a href="https://mgmarlow.github.io">about</a> •{' '}
-        <a href="https://github.com/mgmarlow">github</a> •{' '}
-        <a
-          href="https://mgmarlow.github.io/blog/rss.xml"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          rss
-        </a>
-      </footer>
-    </Layout>
-  )
-}
-
-export const query = graphql`
-  query HomepageQuery {
-    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
-      edges {
-        node {
-          frontmatter {
-            title
-            path
-            date
-          }
-        }
-      }
-    }
-  }
-`
-
-export default IndexPage
+export default About
