@@ -1,7 +1,6 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import SEO from '../components/seo'
-import { OutboundLink } from 'gatsby-plugin-google-analytics'
+import Emphasis from '../components/emphasis'
 import styles from './index.module.css'
 
 const About = () => {
@@ -12,23 +11,30 @@ const About = () => {
         <h1>Graham Marlow</h1>
         <p className={styles.paragraph}>
           I am a software engineer currently working at{' '}
-          <OutboundLink className={styles.link} href="https://mindbody.io">
-            MINDBODY
-          </OutboundLink>
-          . You can find my open source projects on{' '}
-          <OutboundLink
+          <Emphasis
             className={styles.link}
-            href="https://github.com/mgmarlow"
+            variant="blue"
+            to="https://mindbody.io/"
+            outbound={true}
+          >
+            MINDBODY
+          </Emphasis>
+          . You can find my open source projects on{' '}
+          <Emphasis
+            className={styles.link}
+            variant="yellow"
+            to="https://github.com/mgmarlow"
+            outbound={true}
           >
             Github
-          </OutboundLink>
+          </Emphasis>
           .
         </p>
         <p className={styles.paragraph}>
           Sometimes I write technical articles and publish them on my{' '}
-          <Link className={styles.link} to="/blog/">
+          <Emphasis className={styles.link} variant="pink" to="/blog/">
             blog
-          </Link>
+          </Emphasis>
           .
         </p>
       </article>

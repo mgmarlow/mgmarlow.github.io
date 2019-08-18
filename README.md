@@ -5,8 +5,6 @@ Personal homepage and blog. Forked from
 
 ## TODOS
 
-[ ] Analytics
-[ ] Redesign landing
 [ ] Night theme toggle (styled-components & js theme)
 
 ## Local Development
