@@ -7,7 +7,7 @@ date: '2019-08-17'
 The new react-redux [hooks API](https://react-redux.js.org/next/api/hooks)
 makes working with redux feel fresh. Long gone are the days of writing
 extensive `connect()` boilerplate for container components, not to mention
-the nightmare of static-typing it. However, with the new hooks API comes
+the nightmare of adding types. However, with the new hooks API comes
 a change to the fundamental equality comparison that React Redux uses to
 select state off of the store. The change is noted as follows in the
 [documentation](https://react-redux.js.org/next/api/hooks#equality-comparisons-and-updates):
@@ -86,9 +86,8 @@ function SnackList() {
 Given what we know about React Redux, a call to `"SHOW_SNACKS"` that
 changes the value of `show` from `false` to `true` should result in a new
 render of the `SnackList` component, since it depends on the `snacks` state.
-Likewise, a call to `"HIDE_SNACKS"` should have the same effect, given that
-`show` is initially `true`. However, what about a call to `"SHOW_SNACKS"`
-when the value of `show` is already `true`? React components using that value
+However, what about a call to `"SHOW_SNACKS"` when the value of `show` is
+already `true`? React components using that value
 of state _shouldn't need_ to update since they already have the correct value.
 Right?
 
@@ -98,17 +97,20 @@ Try clicking "show" multiple times in this example:
 
 This is not the case for the `SnackList` component. Since
 `useSelector` is configured to grab the entire `snacks` object off state, any
-change to the `snacks` state has React Redux comparing equality:
+change to the `snacks` state has React Redux comparing equality with
 `state.snacks === prevState.snacks`. Given that Redux creates a new object
 from every reducer function, this equality check will always result in
-`false`, as the references for `state` and `prevState` are not the same. So
-even though an identical value is being pushed into the store, our use of
+`false`, as the references for `state` and `prevState` are not the same.
+
+Even though an identical value is being pushed into the store, our use of
 `useSelector` is not able to detect that the values are the same since the
 object reference is different.
 
-This is exactly the sort of performance optimization that the React Redux
+## Fixing Unnecessary Renders
+
+The `SnackList` example is the exact sort of performance optimization that the React Redux
 documentation is referring to. Fortunately, they provide an alternative equality
-comparison function, `shallowEqual`. Let's run through a few `useSelector`
+comparison function: `shallowEqual`. Let's run through a few `useSelector`
 cases using the above state shape:
 
 ```jsx
@@ -140,3 +142,7 @@ Updating `SnackList` to use `shallowEqual` resolves the issue of extra
 re-renders. Try clicking "show" multiple times in this example:
 
 <iframe src="https://codesandbox.io/embed/sharp-jang-68cdh?expanddevtools=1&fontsize=14" title="sharp-jang-68cdh" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+
+The message "SnackList rendering" is only logged when the value of `show` is
+changed to a new value. Our application no longer needlessly renders the
+list of snacks.

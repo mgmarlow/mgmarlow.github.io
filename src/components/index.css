@@ -69,12 +69,16 @@ h6 {
   font-size: 1rem;
 }
 
+p {
+  margin: 1.75rem 0;
+}
+
 p,
 li,
 a {
   color: #333333;
   line-height: 1.45;
-  font-size: 1.15rem;
+  font-size: 1.25rem;
 }
 
 pre,
@@ -84,7 +88,7 @@ code.language-text {
 }
 
 li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 a {
@@ -106,16 +110,10 @@ blockquote > p {
   color: #828282;
 }
 
-/* 
- * Taken from the gatsby guide:
- * https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-remark-prismjs
-*/
-/* .gatsby-highlight-code-line {
-  background-color: #feb;
-  display: block;
-  margin-right: -1em;
-  margin-left: -1em;
-  padding-right: 1em;
-  padding-left: 0.75em;
-  border-left: 0.25em solid #f99;
-} */
+@media (max-width: 600px) {
+  p,
+  a,
+  li {
+    font-size: 1rem;
+  }
+}

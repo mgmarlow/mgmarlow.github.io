@@ -18,7 +18,7 @@ const About = () => {
           >
             MINDBODY
           </a>
-          . You can find many of my open source contributions on{' '}
+          . You can find my open source projects on{' '}
           <a
             className={styles.link}
             rel="noreferrer"
