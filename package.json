@@ -24,6 +24,7 @@
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
     "react-media": "^1.9.2",
+    "reading-time": "^1.2.0",
     "typeface-ibm-plex-serif": "^0.0.75",
     "typeface-source-code-pro": "^0.0.71"
   },
