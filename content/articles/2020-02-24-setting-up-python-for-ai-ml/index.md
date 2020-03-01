@@ -1,34 +1,33 @@
 ---
 path: '/setting-up-python-ai-ml'
-title: 'Setting up Python for AI/ML'
-date: '2020-02-24'
+title: 'Python Virtual Environments for AI/ML'
+date: '2020-03-01'
 ---
 
-When getting started with ML in Python, it can be tempting to
-install packages with `pip`. Even
-Tensorflow [recommends this approach](https://www.tensorflow.org/install).
-However, as soon you dive deep intor your first dependency-mismatch
-debugging session, you'll understand why installing packages this way
-is not advised.
+Virtual environments are the bee's knees. With them developers
+can spin up any version of Python at a moment's notice, add
+or remove dependencies without worrying about mismatch errors,
+and have more confidence in their project's future.
 
-Instead, utilize [virtual environments](https://docs.python.org/3/tutorial/venv.html).
-With virtual environments, packages are added to lightweight containers
-that can be created and destroyed with ease. You can even specify a Python
-version for a given environment, enabling you to run multiple versions of
-Python on the same machine.
+But which of the dozens of ways to configure virtual environments
+is the best? In this article, I'll step through my preferred
+solution using [Miniconda](https://docs.conda.io/en/latest/miniconda.html).
 
 ## Anaconda Python distribution
 
-[Anaconda](https://www.anaconda.com/) is a Python distribution that ships
-with both environment and package management solutions. It offers everything
-needed to spin up Python environments and manage dependencies effectively.
+Most Python developers are familiar with [Anaconda](https://www.anaconda.com/),
+a distribution aimed at data science that ships with a wide variety of features.
+It includes virtual environment automation and package management, as well as
+commonly-used Python packages.
 
 The flip-side is that the base install comes bundled with a ton of extra
 bloat. Anaconda is about 3 GB and contains over 1,500 packages, of which most
-engineers will only use a very small subset. Fortunately, Anaconda
-provides an alternative distribution that is much smaller in size and scope.
+engineers will only use a very small subset. In addition, it divides its tools
+across a slow and obtuse GUI that is more cumbersome to use than its CLI
+counterpart. Fortunately, Anaconda provides an alternative distribution
+that is much smaller in size and scope.
 
-## But Miniconda is better
+## Enter Miniconda
 
 [Miniconda](https://docs.conda.io/en/latest/miniconda.html) is Anaconda
 but without the GUI and the pre-installed packages. As their website states,
@@ -39,11 +38,10 @@ but without the GUI and the pre-installed packages. As their website states,
 
 The Miniconda documentation provides a
 [compare and contrast](https://docs.conda.io/projects/conda/en/latest/user-guide/install/download.html#anaconda-or-miniconda)
-to help decide which distribution one should use. That said, I strongly urge
-readers to use Miniconda instead of Anaconda. No matter which distribution
-is picked, familiarity with the fundamental CLI tool `conda` is required.
-Miniconda forces familiarity with the CLI immediately, making it the better
-distribution for those who are more focused on engineering.
+to help choose a distribution. That said, I strongly urge
+readers to use Miniconda instead of Anaconda. Not only is it drastically
+smaller in size, the `conda` CLI interface is much easier for engineers
+to learn than the GUI.
 
 ## Setting up Miniconda
 
@@ -58,7 +56,7 @@ virtual environments. This is done using `conda init <SHELL NAME>`:
 PS C:\Users\me> conda init powershell
 ```
 
-The full list of available shells:
+Here's the full list of available shells:
 
 ```
 To initialize your shell, run
@@ -87,7 +85,7 @@ the shell's regular output:
 
 `(base)` indicates Miniconda's active virtual environment.
 `conda env list` will display a list of all available virtual environments.
-With initial installation, only `base` has been configured:
+With the initial installation, only `base` has been configured:
 
 ```
 (base) PS C:\Users\me> conda env list
@@ -135,7 +133,7 @@ by running python and importing pandas:
 
 Since no errors were observed, the environment has been successfully created
 and `pandas` is available for use. But `pandas` won't be enough for most
-AI/ML projects, so let's add a few more packages.
+AI/ML projects, so I'll add a few more packages.
 
 ```
 (my-env) PS C:\Users\me> conda install -n my-env numpy jupyter
@@ -144,11 +142,18 @@ AI/ML projects, so let's add a few more packages.
 If packages are available via the
 [Anaconda package repository](https://anaconda.org/anaconda/repo) they
 can be added with `conda install -n <ENVIRONMENT NAME>`. Otherwise,
-they'll need to be installed via `pip` like a normal Python package.
+they'll need to be installed with `pip` like a normal Python package.
+
+> When using `pip`:
+> 
+> Make sure that the desired environment is activated
+> before `pip` is run. e.g. if I want to install a package into `my-env`,
+> I first `conda activate my-env`, then run `pip install <package>`. This
+> ensures the package is installed into the proper environment.
 
 ## Bonus: Visual Studio Code
 
-Armed with an environment configured with a few packages, let's
+Now that I have an environment configured with a few packages, I'll
 load it into [Visual Studio Code](https://code.visualstudio.com/). The
 first thing to do after installing VSCode is to grab the
 [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python).
@@ -166,9 +171,9 @@ print(pandas.__version__)
 ```
 
 Then open the command palette with `Ctrl + Shift + P` and select
-`> Python: Select Interpreter`. From the environment selections, pick
-the one we just created, `my-env`. Doing so will
-create a new folder `.vscode/` with a `settings.json` that contains the following:
+`> Python: Select Interpreter`. From the environment selections, I'll pick
+the one I just created, `my-env`. Doing so will create a new folder,
+`.vscode/`, with a `settings.json` that contains the following:
 
 ```json
 {
@@ -176,12 +181,9 @@ create a new folder `.vscode/` with a `settings.json` that contains the followin
 }
 ```
 
-Now you can execute the code in `main.py` by hitting the green play icon
+Now I can execute the code in `main.py` by hitting the green play icon
 in the upper-right corner of Visual Studio Code and it will run it against
-your selected virtual environment.
-
-And there you have it! A fully-configured virtual environment that enables
-running code directly through Visual Studio Code.
+my selected virtual environment, `my-env`.
 
 ## References and more information
 
