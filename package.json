@@ -6,6 +6,7 @@
   "author": "Graham Marlow",
   "dependencies": {
     "classnames": "^2.2.6",
+    "formik": "^2.1.4",
     "gatsby": "^2.13.45",
     "gatsby-image": "^2.2.7",
     "gatsby-plugin-feed": "^2.3.6",
@@ -26,7 +27,8 @@
     "react-media": "^1.9.2",
     "reading-time": "^1.2.0",
     "typeface-ibm-plex-serif": "^0.0.75",
-    "typeface-source-code-pro": "^0.0.71"
+    "typeface-source-code-pro": "^0.0.71",
+    "yup": "^0.28.3"
   },
   "devDependencies": {
     "gh-pages": "^2.1.1",

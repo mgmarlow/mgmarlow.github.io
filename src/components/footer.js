@@ -2,6 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 import Media from 'react-media'
 import { Link } from 'gatsby'
+import SignupForm from './SignupForm'
 import styles from './footer.module.css'
 
 function Footer({ className, prev, next }) {
@@ -12,6 +13,8 @@ function Footer({ className, prev, next }) {
           matches && <h4 className={styles.mobileHeader}>Other Articles</h4>
         }
       </Media>
+
+      <SignupForm />
 
       <div className={styles.content}>
         {prev && (
