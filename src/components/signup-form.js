@@ -1,22 +1,23 @@
 // Pulled from:
 // https://github.com/kentcdodds/kentcdodds.com/blob/master/src/components/forms/subscribe.js
 import React from 'react'
-import { Formik, Field, Form, ErrorMessage } from 'formik'
+import { Formik, Field, Form } from 'formik'
 import * as Yup from 'yup'
+import styles from './signup-form.module.css'
 
 const SubscribeSchema = Yup.object().shape({
   email_address: Yup.string()
     .email('Invalid email address')
     .required('Required'),
-  first_name: Yup.string(),
 })
 
-// TODO:
-//     title="Great, one last thing..."
-//     body="I just sent you an email with the confirmation link.
-//       **Please check your inbox!**"
 function PostSubmissionMessage() {
-  return <p>foo</p>
+  return (
+    <div>
+      <h4>Great, one last thing...</h4>
+      <p>I just sent you an email with the confirmation link.</p>
+    </div>
+  )
 }
 
 function fetchReducer(state, { type, response, error }) {
@@ -85,49 +86,26 @@ function Subscribe({ tags = [], header = 'Join the Newsletter' }) {
         <Formik
           initialValues={{
             email_address: '',
-            first_name: '',
             tags,
           }}
           validationSchema={SubscribeSchema}
           onSubmit={setValues}
         >
           {() => (
-            <Form>
-              <label htmlFor="first_name">
-                <div>
-                  First Name
-                  <ErrorMessage
-                    name="first_name"
-                    component="span"
-                    className="field-error"
-                  />
-                </div>
-              </label>
-              <Field
-                id="first_name"
-                aria-required="false"
-                name="first_name"
-                placeholder="Jane"
-                type="text"
-              />
-              <label htmlFor="email">
-                <div>
-                  Email
-                  <ErrorMessage
-                    name="email_address"
-                    component="span"
-                    className="field-error"
-                  />
-                </div>
-              </label>
+            <Form className={styles.form}>
               <Field
                 id="email"
+                className={styles.input}
                 aria-required="true"
                 name="email_address"
-                placeholder="jane@acme.com"
+                placeholder="Your email address"
                 type="email"
               />
-              <button data-element="submit" type="submit">
+              <button
+                className={styles.subscribe}
+                data-element="submit"
+                type="submit"
+              >
                 {!pending && 'Subscribe'}
                 {pending && 'Submitting...'}
               </button>

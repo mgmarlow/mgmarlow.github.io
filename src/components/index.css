@@ -5,10 +5,16 @@ body {
   font-kerning: normal;
 }
 
+body {
+  margin: 0;
+}
+
 body,
 html,
 p,
 a,
+button,
+input,
 time {
   color: #333;
   font-family: 'IBM Plex Serif', Georgia, 'Times New Roman', Times, serif;

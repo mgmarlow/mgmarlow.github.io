@@ -1,8 +1,9 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/layout'
-import Footer from '../components/footer'
+import BottomMatter from '../components/bottom-matter'
 import SEO from '../components/seo'
+import Footer from '../components/footer'
 import styles from './post.module.css'
 
 function Template({ data, pageContext }) {
@@ -28,7 +29,8 @@ function Template({ data, pageContext }) {
           </section>
         </article>
       </Layout>
-      <Footer className={styles.footer} prev={prev} next={next} />
+      <BottomMatter className={styles.footer} prev={prev} next={next} />
+      <Footer />
     </>
   )
 }
