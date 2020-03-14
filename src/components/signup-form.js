@@ -11,11 +11,14 @@ const SubscribeSchema = Yup.object().shape({
     .required('Required'),
 })
 
-function PostSubmissionMessage() {
+function PostSubmissionMessage({ className }) {
   return (
-    <div>
+    <div className={className}>
       <h4>Great, one last thing...</h4>
-      <p>I just sent you an email with the confirmation link.</p>
+      <p>
+        I just sent you an email with the confirmation link. Please check your
+        inbox!
+      </p>
     </div>
   )
 }
