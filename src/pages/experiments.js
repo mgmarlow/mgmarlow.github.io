@@ -1,20 +1,6 @@
 import React from 'react'
-import P5Wrapper from '../components/experiments/p5-wrapper'
-
-const sketch = p => {
-  let x = 100
-  let y = 100
-
-  p.setup = function() {
-    p.createCanvas(700, 410)
-  }
-
-  p.draw = function() {
-    p.background(0)
-    p.fill(255)
-    p.rect(x, y, 50, 50)
-  }
-}
+import P5Wrapper from '../experiments/p5-wrapper'
+import exampleSketch from '../experiments/sketches/example-sketch'
 
 const loadP5 = () =>
   new Promise((resolve, reject) => {
@@ -39,9 +25,11 @@ const ExperimentsPage = () => {
     return <p>loading...</p>
   }
 
+  // TODO: add code link
+  // https://github.com/mgmarlow/mgmarlow.github.io/tree/gatsby/src/experiments
   return (
     <div>
-      <P5Wrapper sketch={sketch} />
+      <P5Wrapper sketch={exampleSketch} />
     </div>
   )
 }
