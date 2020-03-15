@@ -1,6 +1,7 @@
 // Pulled from:
 // https://github.com/kentcdodds/kentcdodds.com/blob/master/src/components/forms/subscribe.js
 import React from 'react'
+import classnames from 'classnames'
 import { Formik, Field, Form } from 'formik'
 import * as Yup from 'yup'
 import styles from './signup-form.module.css'
@@ -14,11 +15,8 @@ const SubscribeSchema = Yup.object().shape({
 function PostSubmissionMessage({ className }) {
   return (
     <div className={className}>
-      <h4>Great, one last thing...</h4>
-      <p>
-        I just sent you an email with the confirmation link. Please check your
-        inbox!
-      </p>
+      <h4 className={styles.header}>Great, one last thing...</h4>
+      <p>Please check your inbox for a confirmation email.</p>
     </div>
   )
 }
@@ -69,7 +67,7 @@ function useFetch({ url, body }) {
   return state
 }
 
-function Subscribe({ tags = [], header = 'Join the Newsletter' }) {
+function Subscribe({ tags = [], header = 'Join the Newsletter', className }) {
   const [values, setValues] = React.useState()
   const { pending, response, error } = useFetch({
     url: 'https://app.convertkit.com/forms/1257289/subscriptions',
@@ -83,7 +81,7 @@ function Subscribe({ tags = [], header = 'Join the Newsletter' }) {
 
   return (
     <div>
-      {!successful && <h3>{header}</h3>}
+      {!successful && <h3 className={styles.header}>{header}</h3>}
 
       {!successful && (
         <Formik
@@ -95,7 +93,7 @@ function Subscribe({ tags = [], header = 'Join the Newsletter' }) {
           onSubmit={setValues}
         >
           {() => (
-            <Form className={styles.form}>
+            <Form className={classnames(className, styles.form)}>
               <Field
                 id="email"
                 className={styles.input}
@@ -116,8 +114,10 @@ function Subscribe({ tags = [], header = 'Join the Newsletter' }) {
           )}
         </Formik>
       )}
-      {submitted && !pending && <PostSubmissionMessage response={response} />}
-      {errorMessage && <div>{errorMessage}</div>}
+      {submitted && !pending && (
+        <PostSubmissionMessage className={className} response={response} />
+      )}
+      {errorMessage && <div className={className}>{errorMessage}</div>}
     </div>
   )
 }

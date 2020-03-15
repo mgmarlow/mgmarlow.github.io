@@ -1,8 +1,41 @@
 .footer {
   background-color: #f5f5f5;
-  display: flex;
-
-  justify-content: center;
   padding-top: 4rem;
   padding-bottom: 5rem;
+}
+
+.flexCenter {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2rem;
+  align-items: center;
+}
+
+.form {
+  margin-bottom: 2rem;
+}
+
+.textCentered {
+  text-align: center;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.linkItem {
+  margin: 0;
+}
+
+@media (min-width: 440px) {
+  .list {
+    margin-left: 2rem;
+  }
 }
