@@ -6,6 +6,9 @@ const Footer = () => (
   <footer className={styles.footer}>
     <div>
       <SignupForm />
+
+      {/* TODO: about, blog, and experiments links */}
+      {/* <Link to="/experiments/">experiments</Link> */}
     </div>
   </footer>
 )

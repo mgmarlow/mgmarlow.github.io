@@ -37,6 +37,13 @@ const About = () => {
           </Emphasis>
           .
         </p>
+        <p className={styles.paragraph}>
+          Experiments copy{' '}
+          <Emphasis className={styles.link} variant="purple" to="/experiments/">
+            experiments
+          </Emphasis>
+          .
+        </p>
       </article>
     </div>
   )

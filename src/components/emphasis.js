@@ -9,6 +9,7 @@ const Emphasis = ({ className, children, to, variant, outbound }) => {
     [styles.pink]: variant === 'pink',
     [styles.yellow]: variant === 'yellow',
     [styles.blue]: variant === 'blue',
+    [styles.purple]: variant === 'purple',
   })
 
   return outbound ? (
