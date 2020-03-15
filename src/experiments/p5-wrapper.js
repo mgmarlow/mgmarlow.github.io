@@ -5,9 +5,7 @@ const P5Wrapper = ({ sketch }) => {
   const sketchContainer = React.useRef(null)
 
   React.useEffect(() => {
-    if (!canvas.current) {
-      canvas.current = new window.p5(sketch, sketchContainer.current)
-    }
+    canvas.current = new window.p5(sketch, sketchContainer.current)
 
     return () => {
       canvas.current.remove()
