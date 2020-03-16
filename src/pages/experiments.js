@@ -26,8 +26,6 @@ const ExperimentsPage = () => {
     return <p>loading...</p>
   }
 
-  // TODO: add code link
-  // https://github.com/mgmarlow/mgmarlow.github.io/tree/gatsby/src/experiments
   return (
     <>
       <SketchBrowser />
