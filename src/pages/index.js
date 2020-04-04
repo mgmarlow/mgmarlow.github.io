@@ -35,11 +35,7 @@ const About = () => {
           <Emphasis className={styles.link} variant="pink" to="/blog/">
             blog
           </Emphasis>
-          . I also{' '}
-          <Emphasis className={styles.link} variant="purple" to="/experiments/">
-            experiment
-          </Emphasis>{' '}
-          with different JavaScript ideas .
+          .
         </p>
       </article>
     </div>
