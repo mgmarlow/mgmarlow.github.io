@@ -1,14 +1,13 @@
 ---
 path: '/themeable-svelte-components'
 title: 'Creating Themeable Svelte Components'
-date: '2020-04-04'
+date: '2020-04-05'
 ---
 
-Designing themeable Svelte components is a little different than
-what I've been used to in React. In React, my primary technique
-is to use a combination of
+React makes theming components easy. My preferred way combines
 [classnames](https://github.com/JedWatson/classnames) and
-[CSS modules](https://github.com/css-modules/css-modules):
+[CSS modules](https://github.com/css-modules/css-modules)
+to create locally-scoped styles that can be easily modified:
 
 ```jsx
 import React from 'react'
@@ -17,16 +16,17 @@ import styles from './Themeable.module.css'
 
 const ThemableComponent = ({ className }) => (
   <div className={classnames(className, styles.wrapper)}>
-    <button>Click!</button>
+    <p>content goes here</p>
   </div>
 )
 ```
 
-Even though the above component implements its own set of
-default styles (from `.wrapper`), any of the properties can be
-overriden from the parent context.
+A CSS module-compiled class is passed as props to override the
+default styles of a component:
 
 ```jsx
+import styles from './ParentComponent.module.css'
+
 const ParentComponent = () => (
   <div>
     <Themeable className={styles.someOtherStyle} />
@@ -34,46 +34,37 @@ const ParentComponent = () => (
 )
 ```
 
-This pattern is great for creating flexible design systems.
-Components maintain the benefits of CSS Module-scoped styles
-and the flexibility of custom theming.
+This simple pattern enables flexibility in React design systems.
+How can we achieve something similar in Svelte?
 
-The HTML output for the above example looks like the following:
+## Converting the pattern to Svelte
 
-```html
-<div
-  class="_src_ParentComponent__someOtherStyle _src_ThemeableComponent__wrapper"
->
-  <button>Click!</button>
-</div>
-```
+The classes generated from Svelte's compiler will scope CSS to
+their associated components out of the box, so we can ditch
+CSS modules. However, since the Svelte compiler functions
+differently than React webpack configurations, we need to
+do a little extra work
+to translate the above React pattern into Svelte.
 
-## Similar patterns in Svelte
-
-Svelte is CSS-component scoped by default, meaning that we don't
-need to utilize CSS modules to avoid CSS name collisions. However,
-this built-in CSS-component scoping actually becomes an issue
-when we try to move those styles through components via props.
-
-Let's try to replicate React-style theming with Svelte:
+Here is a first approximation:
 
 ```html
+// ThemeableComponent.svelte
 <script>
-  // ThemeableComponent.svelte
   export let className
 </script>
 
 <div class="{className}">
-  <button>Click!</button>
+  <p>content goes here</p>
 </div>
 ```
 
-`ThemeableComponent` takes in a `className` as a prop, and passes it
-directly into its template.
+`ThemeableComponent` takes in `className` as a prop and
+simply passes it into its template.
 
 ```html
+// ParentComponent.svelte
 <script>
-  // ParentComponent.svelte
   import ThemeableComponent from './ThemeableComponent.svelte'
 </script>
 
@@ -87,27 +78,40 @@ directly into its template.
 ```
 
 Attempt to compile this code and you'll see the following warning,
-telling us that our CSS is not actually going to be applied.
+telling us that our CSS is not actually going to be applied:
 
 ```
 Unused CSS selector (6:2)
 ```
 
-Svelte style compilation works similarly
-to CSS modules in that randomly-generated classes accompany the
-generated stylesheets, but it differs in that the style names are
-not available as JavaScript objects and are thereby inaccessible
-to the template.
+This is a fundamental difference between the React method and
+the Svelte method. Classes within style tags are only
+processed by the Svelte compiler if they are referenced by
+a `class` keyword in the component's template.
 
-## The initial approach
-
-In other words, in order to achieve the same sort of API as the
-React counterpart, we need to make use of Svelte's `:global`
-modifier to disable the CSS component scoping.
+Since the `ParentComponent` doesn't use `class` in its template,
+but instead uses `className`, the `.wrapper` class will never
+actually be compiled. While the compiled template is what we
+expect, it is missing its CSS output.
 
 ```html
+// Compiled output
+<style></style>
+
+<div class="wrapper">
+  <p>content goes here</p>
+</div>
+```
+
+## Enabling CSS compilation with :global
+
+In order to achieve the same sort of API as the
+React counterpart, we need to make use of Svelte's `:global`
+modifier and disable the CSS component scoping:
+
+```html
+// ParentComponent.svelte
 <script>
-  // ParentComponent.svelte
   import ThemeableComponent from './ThemeableComponent.svelte'
 </script>
 
@@ -120,11 +124,16 @@ modifier to disable the CSS component scoping.
 <ThemeableComponent className="wrapper" />
 ```
 
-Now the code runs as expected because `ThemeableComponent`
-is using a globally-available style, `"wrapper"`. The compiled
-output looks like the following:
+The code now runs as expected because the Svelte compiler
+will compile the `.wrapper` class, regardless of whether
+or not it can detect its use.
+
+Note the inclusion of a new randomly-generated class,
+`"svelte-ldiwpm"`, in the compiled output, signaling that
+Svelte successfully compiled our CSS:
 
 ```html
+// Compiled output
 <style>
   .wrapper {
     background-color: red;
@@ -138,16 +147,20 @@ output looks like the following:
 </div>
 ```
 
-## The better approach
+## A better approach
 
-Now this comparison is missing an additional facet, because now
-any use of the class `"wrapper"` in our app will result in
-style collisions. We can use an extra CSS selector to help
-mitigate this issue:
+The compiled output points out a very important difference
+between the current Svelte iteration and the React counterpart.
+The class, `.wrapper`, is not scoped to an element.
+This means that any component that uses a similar convention,
+`:global(.wrapper)` will override this style.
+
+This issue can be mitigated with an extra CSS selector and
+HTML element:
 
 ```html
+// ParentComponent.svelte
 <script>
-  // ParentComponent.svelte
   import ThemeableComponent from './ThemeableComponent.svelte'
 </script>
 
@@ -162,10 +175,11 @@ mitigate this issue:
 </div>
 ```
 
-Now the theme-specific style is contained in a safely nested
-wrapper that will prevent CSS collisions.
+By introducing a `div` and updating the CSS selector, the
+compiled output is now scoped to our component:
 
 ```html
+// Compiled output
 <style>
   div.svelte-ldiwpm .wrapper {
     color: red;
