@@ -11,17 +11,11 @@ const About = () => {
         <h1>Graham Marlow</h1>
         <p className={styles.paragraph}>
           I am a software engineer currently working at{' '}
-          <Emphasis
-            className={styles.link}
-            variant="blue"
-            to="https://mindbody.io/"
-            outbound={true}
-          >
+          <Emphasis variant="blue" to="https://mindbody.io/" outbound={true}>
             Mindbody
           </Emphasis>
           . You can find my open source projects on{' '}
           <Emphasis
-            className={styles.link}
             variant="yellow"
             to="https://github.com/mgmarlow"
             outbound={true}
@@ -32,7 +26,7 @@ const About = () => {
         </p>
         <p className={styles.paragraph}>
           Sometimes I write technical articles and publish them on my{' '}
-          <Emphasis className={styles.link} variant="pink" to="/blog/">
+          <Emphasis variant="pink" to="/blog/">
             blog
           </Emphasis>
           .
