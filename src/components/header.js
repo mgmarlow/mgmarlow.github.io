@@ -1,13 +1,24 @@
 import React from 'react'
+import styled from 'styled-components'
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
-import styles from './header.module.css'
+
+const activeClassName = 'active-header'
+
+const HeaderLink = styled(Link).attrs({
+  activeClassName,
+})`
+  font-size: 1.5rem;
+
+  &.${activeClassName} {
+    color: #333;
+    text-decoration: none;
+  }
+`
 
 const Header = ({ siteTitle }) => (
   <header>
-    <Link to="/blog/" activeClassName={styles.gray} className={styles.link}>
-      {siteTitle}
-    </Link>
+    <HeaderLink to="/blog/">{siteTitle}</HeaderLink>
   </header>
 )
 
