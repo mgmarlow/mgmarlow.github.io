@@ -42,10 +42,22 @@ const EmphasisLink = styled(Link)`
   }
 `
 
-const Emphasis = ({ children, to, variant, outbound }) => (
-  <EmphasisLink variant={variant} as={outbound ? OutboundLink : Link} href={to}>
-    {children}
-  </EmphasisLink>
-)
+const Emphasis = ({ children, to, variant, outbound }) => {
+  const linkProps = outbound
+    ? {
+        href: to,
+      }
+    : { to }
+
+  return (
+    <EmphasisLink
+      variant={variant}
+      as={outbound ? OutboundLink : Link}
+      {...linkProps}
+    >
+      {children}
+    </EmphasisLink>
+  )
+}
 
 export default Emphasis
