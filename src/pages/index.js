@@ -17,7 +17,7 @@ const About = () => {
             to="https://mindbody.io/"
             outbound={true}
           >
-            MINDBODY
+            Mindbody
           </Emphasis>
           . You can find my open source projects on{' '}
           <Emphasis
