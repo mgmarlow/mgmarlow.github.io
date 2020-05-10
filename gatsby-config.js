@@ -2,7 +2,7 @@ module.exports = {
   pathPrefix: '/',
   siteMetadata: {
     title: `mgmarlow.github.io/blog/`,
-    description: `The writings of Graham Marlow.`,
+    description: `Software articles written by Graham Marlow.`,
     siteUrl: `https://mgmarlow.github.io/`,
   },
   plugins: [

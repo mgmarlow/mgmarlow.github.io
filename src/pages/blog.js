@@ -38,7 +38,7 @@ function Blog({ data }) {
 
   return (
     <Layout>
-      <SEO title="Articles" />
+      <SEO title="Blog" />
 
       <ul className={styles.list}>{posts}</ul>
 
