@@ -41,6 +41,16 @@ code {
   margin: 1rem 0;
 }
 
+.gatsby-highlight {
+  margin: 0 -80px;
+}
+
+@media (max-width: 1000px) {
+  .gatsby-highlight {
+    margin: 0 -1rem;
+  }
+}
+
 img {
   margin: 1rem 0;
   width: 100%;
