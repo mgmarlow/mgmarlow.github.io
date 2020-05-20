@@ -1,3 +1,7 @@
+import React from 'react'
+import { createGlobalStyle } from 'styled-components'
+
+const GlobalStyle = createGlobalStyle`
 html,
 body {
   background-color: #ffffff;
@@ -140,3 +144,15 @@ blockquote > p {
     font-size: 0.85rem;
   }
 }
+`
+
+const DefaultTheme = ({ children }) => {
+  return (
+    <>
+      <GlobalStyle />
+      {children}
+    </>
+  )
+}
+
+export default DefaultTheme
