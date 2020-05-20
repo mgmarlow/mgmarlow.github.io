@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { ThemeProvider } from 'styled-components'
 import { useStaticQuery, graphql } from 'gatsby'
 import Header from '../Header'
 import Container from '../Container'
@@ -16,13 +17,19 @@ const Layout = ({ children }) => {
     }
   `)
 
+  const theme = {
+    style: 'light',
+  }
+
   return (
-    <DefaultTheme>
-      <Container>
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <main>{children}</main>
-      </Container>
-    </DefaultTheme>
+    <ThemeProvider theme={theme}>
+      <DefaultTheme>
+        <Container>
+          <Header siteTitle={data.site.siteMetadata.title} />
+          <main>{children}</main>
+        </Container>
+      </DefaultTheme>
+    </ThemeProvider>
   )
 }
 

@@ -4,7 +4,8 @@ import { createGlobalStyle } from 'styled-components'
 const GlobalStyle = createGlobalStyle`
 html,
 body {
-  background-color: #ffffff;
+  background-color: ${props =>
+    props.theme.style === 'light' ? '#ffffff' : '#131217'};
   font-feature-settings: 'kern' 1;
   font-kerning: normal;
 }
@@ -20,7 +21,7 @@ a,
 button,
 input,
 time {
-  color: #333;
+  color: ${props => (props.theme.style === 'light' ? '#333' : '#cbcbcc')};
   font-family: 'IBM Plex Serif', Georgia, 'Times New Roman', Times, serif;
   font-weight: 400;
   font-style: normal;
@@ -96,7 +97,7 @@ p {
 p,
 li,
 a {
-  color: #333333;
+  color: ${props => (props.theme.style === 'light' ? '#333333' : '#cbcbcc')};
   line-height: 1.5;
   font-size: 1.25rem;
 }
@@ -114,7 +115,7 @@ li {
 a {
   text-decoration-skip-ink: none;
   text-decoration: underline;
-  color: #326891;
+  color: ${props => (props.theme.style === 'light' ? '#326891' : '#b17acc')};
 }
 
 a:hover {
