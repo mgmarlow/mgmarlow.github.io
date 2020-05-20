@@ -2,7 +2,7 @@ import React from 'react'
 import Media from 'react-media'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
-import SEO from '../components/seo'
+import SEO from '../components/SEO'
 import styles from './blog.module.css'
 
 function PostLink({ node }) {

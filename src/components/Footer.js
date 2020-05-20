@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import SignupForm from './signup-form'
-import styles from './footer.module.css'
+import SignupForm from './SignupForm'
+import styles from './Footer.module.css'
 
 const Footer = () => (
   <footer className={styles.footer}>
