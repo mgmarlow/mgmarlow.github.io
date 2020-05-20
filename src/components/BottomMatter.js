@@ -2,7 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 import Media from 'react-media'
 import { Link } from 'gatsby'
-import styles from './bottom-matter.module.css'
+import styles from './BottomMatter.module.css'
 
 function BottomMatter({ className, prev, next }) {
   return (

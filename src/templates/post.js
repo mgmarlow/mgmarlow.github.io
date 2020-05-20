@@ -1,9 +1,9 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import BottomMatter from '../components/bottom-matter'
-import SEO from '../components/seo'
-import Footer from '../components/footer'
+import BottomMatter from '../components/BottomMatter'
+import SEO from '../components/SEO'
+import Footer from '../components/Footer'
 import styles from './post.module.css'
 
 function Template({ data, pageContext }) {

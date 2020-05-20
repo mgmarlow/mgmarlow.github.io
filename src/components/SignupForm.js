@@ -4,7 +4,7 @@ import React from 'react'
 import classnames from 'classnames'
 import { Formik, Field, Form } from 'formik'
 import * as Yup from 'yup'
-import styles from './signup-form.module.css'
+import styles from './SignupForm.module.css'
 
 const SubscribeSchema = Yup.object().shape({
   email_address: Yup.string()
