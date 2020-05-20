@@ -6,4 +6,4 @@
 
 require('typeface-ibm-plex-serif')
 require('typeface-source-code-pro')
-require('prismjs/themes/prism-solarizedlight.css')
+require('prismjs/themes/prism-tomorrow.css')
