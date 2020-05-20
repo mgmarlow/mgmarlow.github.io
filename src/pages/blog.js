@@ -1,7 +1,7 @@
 import React from 'react'
 import Media from 'react-media'
 import { graphql, Link } from 'gatsby'
-import Layout from '../components/layout'
+import Layout from '../components/Layout'
 import SEO from '../components/seo'
 import styles from './blog.module.css'
 

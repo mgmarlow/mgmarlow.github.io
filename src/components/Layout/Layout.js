@@ -1,10 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
-import Header from './header'
-import Container from './Container'
-
-import './index.css'
+import Header from '../header'
+import Container from '../Container'
+import DefaultTheme from './DefaultTheme'
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -18,10 +17,12 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <Container>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <main>{children}</main>
-    </Container>
+    <DefaultTheme>
+      <Container>
+        <Header siteTitle={data.site.siteMetadata.title} />
+        <main>{children}</main>
+      </Container>
+    </DefaultTheme>
   )
 }
 
