@@ -37,9 +37,17 @@ const About = () => {
               .
             </p>
             <p className={styles.paragraph}>
-              Sometimes I write technical articles and publish them on my{' '}
+              Sometimes I write technical articles for my{' '}
               <Emphasis variant="pink" to="/blog/">
                 blog
+              </Emphasis>
+              . You can also play a few of my published{' '}
+              <Emphasis
+                outbound={true}
+                to="https://treeblah.itch.io/"
+                variant="purple"
+              >
+                games
               </Emphasis>
               .
             </p>
