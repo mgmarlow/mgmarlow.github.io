@@ -41,13 +41,13 @@ const About = () => {
               <Emphasis variant="pink" to="/blog/">
                 blog
               </Emphasis>
-              . You can also play a few of my published{' '}
+              . You can also check out what I'm{' '}
               <Emphasis
                 outbound={true}
-                to="https://treeblah.itch.io/"
+                to="https://techbookclub.dev/"
                 variant="purple"
               >
-                games
+                reading
               </Emphasis>
               .
             </p>
