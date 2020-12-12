@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
-import { OutboundLink } from 'gatsby-plugin-google-analytics'
 
 const EmphasisLink = styled(Link)`
   font-size: 1.5rem;
@@ -52,7 +51,7 @@ const Emphasis = ({ children, to, variant, outbound }) => {
   return (
     <EmphasisLink
       variant={variant}
-      as={outbound ? OutboundLink : Link}
+      as={outbound ? 'a' : Link}
       {...linkProps}
     >
       {children}

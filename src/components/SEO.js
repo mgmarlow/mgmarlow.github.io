@@ -32,7 +32,6 @@ function SEO({ description, lang, meta, title, excludeTemplate }) {
         lang,
       }}
       title={title}
-      titleTemplate={excludeTemplate ? '' : '%s | mgmarlow.com'}
       meta={[
         {
           name: `description`,
@@ -72,6 +71,7 @@ function SEO({ description, lang, meta, title, excludeTemplate }) {
 }
 
 SEO.defaultProps = {
+  title: 'mgmarlow.com',
   lang: `en`,
   meta: [],
   description: ``,
@@ -81,7 +81,7 @@ SEO.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
 }
 
 export default SEO
