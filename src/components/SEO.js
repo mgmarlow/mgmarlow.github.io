@@ -32,7 +32,7 @@ function SEO({ description, lang, meta, title, excludeTemplate }) {
         lang,
       }}
       title={title}
-      titleTemplate={!excludeTemplate && `%s | Graham Marlow`}
+      titleTemplate={excludeTemplate ? '' : '%s | Graham Marlow'}
       meta={[
         {
           name: `description`,
