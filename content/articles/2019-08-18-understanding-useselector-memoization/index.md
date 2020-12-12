@@ -1,5 +1,5 @@
 ---
-path: '/understanding-useselector-memoization'
+path: '/articles/understanding-useselector-memoization'
 title: 'Understanding useSelector Memoization'
 date: '2019-08-17'
 ---

@@ -1,5 +1,5 @@
 ---
-path: '/adaptable-data-stores-angular'
+path: '/articles/adaptable-data-stores-angular'
 title: 'Adaptable Data Stores in Angular'
 date: '2017-09-02'
 ---

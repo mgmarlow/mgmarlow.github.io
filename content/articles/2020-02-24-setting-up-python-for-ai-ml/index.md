@@ -1,5 +1,5 @@
 ---
-path: '/setting-up-python-ai-ml'
+path: '/articles/setting-up-python-ai-ml'
 title: 'Python Virtual Environments for AI/ML'
 date: '2020-03-01'
 ---

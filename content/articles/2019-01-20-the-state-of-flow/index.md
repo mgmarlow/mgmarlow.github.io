@@ -1,5 +1,5 @@
 ---
-path: '/the-state-of-flow'
+path: '/articles/the-state-of-flow'
 title: 'The State of Flow in 2019'
 date: '2019-01-20'
 ---
