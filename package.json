@@ -13,7 +13,7 @@
     "gatsby-plugin-feed": "^2.3.6",
     "gatsby-plugin-google-analytics": "^2.1.7",
     "gatsby-plugin-manifest": "^2.2.4",
-    "gatsby-plugin-offline": "^2.2.4",
+    "gatsby-plugin-offline": "^3.6.0",
     "gatsby-plugin-react-helmet": "^3.1.2",
     "gatsby-plugin-sharp": "^2.2.9",
     "gatsby-plugin-styled-components": "^3.3.1",
@@ -23,19 +23,19 @@
     "gatsby-transformer-sharp": "^2.2.5",
     "prismjs": "^1.17.1",
     "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-helmet": "^5.2.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0",
     "react-media": "^1.9.2",
     "reading-time": "^1.2.0",
     "styled-components": "^5.1.0",
-    "typeface-ibm-plex-serif": "^0.0.75",
-    "typeface-source-code-pro": "^0.0.71",
-    "yup": "^0.28.3"
+    "typeface-ibm-plex-serif": "^1.1.13",
+    "typeface-source-code-pro": "^1.1.13",
+    "yup": "^0.32.8"
   },
   "devDependencies": {
-    "gh-pages": "^2.1.1",
-    "prettier": "^1.18.2"
+    "gh-pages": "^3.1.0",
+    "prettier": "^2.2.1"
   },
   "keywords": [
     "gatsby"
