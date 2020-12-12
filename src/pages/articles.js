@@ -3,7 +3,7 @@ import Media from 'react-media'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
-import styles from './blog.module.css'
+import styles from './articles.module.css'
 
 function PostLink({ node }) {
   const { frontmatter } = node
@@ -27,7 +27,7 @@ function PostLink({ node }) {
   )
 }
 
-function Blog({ data }) {
+function Articles({ data }) {
   const { edges } = data.allMarkdownRemark
 
   const posts = edges.map(({ node }, i) => (
@@ -38,7 +38,7 @@ function Blog({ data }) {
 
   return (
     <Layout>
-      <SEO title="Blog" />
+      <SEO />
 
       <ul className={styles.list}>{posts}</ul>
 
@@ -76,4 +76,4 @@ export const query = graphql`
   }
 `
 
-export default Blog
+export default Articles

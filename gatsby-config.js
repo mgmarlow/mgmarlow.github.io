@@ -1,7 +1,7 @@
 module.exports = {
   pathPrefix: '/',
   siteMetadata: {
-    title: `mgmarlow.com/blog`,
+    title: `mgmarlow.com/articles`,
     description: `The articles and projects of Graham Marlow.`,
     siteUrl: `https://mgmarlow.com/`,
   },

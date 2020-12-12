@@ -38,7 +38,7 @@ const About = () => {
             </p>
             <p className={styles.paragraph}>
               Sometimes I write technical articles for my{' '}
-              <Emphasis variant="pink" to="/blog/">
+              <Emphasis variant="pink" to="/articles/">
                 blog
               </Emphasis>
               . You can also check out what I'm{' '}

@@ -1,7 +1,7 @@
 {
-  "name": "blog",
+  "name": "mgmarlow.com",
   "private": true,
-  "description": "Homepage and blog",
+  "description": "The articles and projects of Graham Marlow.",
   "version": "0.1.0",
   "author": "Graham Marlow",
   "dependencies": {

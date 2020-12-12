@@ -18,7 +18,7 @@ const HeaderLink = styled(Link).attrs({
 
 const Header = ({ siteTitle }) => (
   <header>
-    <HeaderLink to="/blog/">{siteTitle}</HeaderLink>
+    <HeaderLink to="/articles/">{siteTitle}</HeaderLink>
   </header>
 )
 
