@@ -1,9 +1,9 @@
 module.exports = {
   pathPrefix: '/',
   siteMetadata: {
-    title: `mgmarlow.github.io/blog/`,
-    description: `Software articles written by Graham Marlow.`,
-    siteUrl: `https://mgmarlow.github.io/`,
+    title: `mgmarlow.com/blog`,
+    description: `The articles and projects of Graham Marlow.`,
+    siteUrl: `https://mgmarlow.com/`,
   },
   plugins: [
     {
@@ -40,7 +40,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Graham Marlow's Blog`,
+        name: `mgmarlow.com`,
         short_name: `archive`,
         start_url: `/`,
         background_color: `#663399`,

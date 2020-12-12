@@ -14,7 +14,7 @@ const About = () => {
     <ThemeProvider theme={theme}>
       <DefaultTheme>
         <div className={styles.container}>
-          <SEO title="Graham Marlow" excludeTemplate={true} />
+          <SEO title="mgmarlow.com" excludeTemplate={true} />
           <article>
             <h1>Graham Marlow</h1>
             <p className={styles.paragraph}>
