@@ -24,7 +24,7 @@ const About = () => {
                 href="https://mindbody.io/"
                 outbound={true}
               >
-                <a>Mindbody</a>
+                Mindbody
               </Emphasis>
               . You can find my open source projects on{' '}
               <Emphasis
@@ -32,14 +32,14 @@ const About = () => {
                 href="https://github.com/mgmarlow"
                 outbound={true}
               >
-                <a>Github</a>
+                Github
               </Emphasis>
               .
             </p>
             <p className={styles.paragraph}>
               Sometimes I write technical articles for my{' '}
               <Emphasis variant="pink" href="/articles/">
-                <a>blog</a>
+                blog
               </Emphasis>
               . You can also check out what I'm{' '}
               <Emphasis
@@ -47,7 +47,7 @@ const About = () => {
                 href="https://techbookclub.dev/"
                 variant="purple"
               >
-                <a>reading</a>
+                reading
               </Emphasis>
               .
             </p>

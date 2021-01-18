@@ -1,5 +1,6 @@
 import React from 'react'
 import remark from 'remark'
+import prism from 'remark-prism'
 import html from 'remark-html'
 import Layout from '../../components/Layout'
 import SEO from '../../components/SEO'
@@ -10,6 +11,7 @@ import styles from './[slug].module.css'
 export async function getStaticProps({ params }) {
   const post = getPostBySlug(params.slug)
   const markdown = await remark()
+    .use(prism)
     .use(html)
     .process(post.content || '')
   const content = markdown.toString()
@@ -45,6 +47,7 @@ export default function Post({ content, title, date }) {
           </section>
         </article>
       </Layout>
+
       {/* TODO: */}
       {/* <BottomMatter className={styles.footer} prev={prev} next={next} /> */}
       <Footer />

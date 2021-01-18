@@ -4,7 +4,7 @@ import { createGlobalStyle } from 'styled-components'
 const GlobalStyle = createGlobalStyle`
 html,
 body {
-  background-color: ${props =>
+  background-color: ${(props) =>
     props.theme.style === 'light' ? '#ffffff' : '#131217'};
   font-feature-settings: 'kern' 1;
   font-kerning: normal;
@@ -21,7 +21,7 @@ a,
 button,
 input,
 time {
-  color: ${props => (props.theme.style === 'light' ? '#333' : '#cbcbcc')};
+  color: ${(props) => (props.theme.style === 'light' ? '#333' : '#cbcbcc')};
   font-family: 'IBM Plex Serif', Georgia, 'Times New Roman', Times, serif;
   font-weight: 400;
   font-style: normal;
@@ -46,12 +46,12 @@ code {
   margin: 1rem 0;
 }
 
-.gatsby-highlight {
+.remark-highlight {
   margin: 0 -80px;
 }
 
 @media (max-width: 1000px) {
-  .gatsby-highlight {
+  .remark-highlight {
     margin: 0 -1rem;
   }
 }
@@ -97,7 +97,7 @@ p {
 p,
 li,
 a {
-  color: ${props => (props.theme.style === 'light' ? '#333333' : '#cbcbcc')};
+  color: ${(props) => (props.theme.style === 'light' ? '#333333' : '#cbcbcc')};
   line-height: 1.5;
   font-size: 1.25rem;
 }
@@ -115,7 +115,7 @@ li {
 a {
   text-decoration-skip-ink: none;
   text-decoration: underline;
-  color: ${props => (props.theme.style === 'light' ? '#326891' : '#b17acc')};
+  color: ${(props) => (props.theme.style === 'light' ? '#326891' : '#b17acc')};
 }
 
 a:hover {

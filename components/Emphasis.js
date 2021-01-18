@@ -2,12 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
 
-const EmphasisLink = styled(Link)`
+const EmphasisLink = styled('a')`
   font-size: 1.5rem;
   color: #333;
   z-index: 1;
   text-decoration: none;
   position: relative;
+  cursor: pointer;
 
   &::after {
     background-color: ${(props) => {
@@ -41,17 +42,11 @@ const EmphasisLink = styled(Link)`
   }
 `
 
-const Emphasis = ({ children, href, variant, outbound }) => {
-  const linkProps = outbound
-    ? {
-        href,
-      }
-    : { href }
-
+const Emphasis = ({ children, href, variant }) => {
   return (
-    <EmphasisLink variant={variant} as={outbound ? 'a' : Link} {...linkProps}>
-      {children}
-    </EmphasisLink>
+    <Link href={href}>
+      <EmphasisLink variant={variant}>{children}</EmphasisLink>
+    </Link>
   )
 }
 

@@ -5,10 +5,12 @@ import PropTypes from 'prop-types'
 
 const activeClassName = 'active-header'
 
-const HeaderLink = styled(Link).attrs({
+const HeaderLink = styled('a').attrs({
   activeClassName,
 })`
   font-size: 1.5rem;
+  cursor: pointer;
+  color: #000;
 
   &.${activeClassName} {
     color: #333;
@@ -18,7 +20,9 @@ const HeaderLink = styled(Link).attrs({
 
 const Header = ({ siteTitle }) => (
   <header>
-    <HeaderLink href="/articles/"><a>{siteTitle}</a></HeaderLink>
+    <Link href="/articles/">
+      <HeaderLink>{siteTitle}/articles</HeaderLink>
+    </Link>
   </header>
 )
 
