@@ -1,8 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import Link from 'next/link'
 
-const EmphasisLink = styled('a')`
+const EmphasisLink = styled.a`
   font-size: 1.5rem;
   color: #333;
   z-index: 1;
@@ -42,12 +41,10 @@ const EmphasisLink = styled('a')`
   }
 `
 
-const Emphasis = ({ children, href, variant }) => {
+export default function Emphasis({ variant, children, href }) {
   return (
-    <Link href={href}>
-      <EmphasisLink variant={variant}>{children}</EmphasisLink>
-    </Link>
+    <EmphasisLink href={href} variant={variant}>
+      {children}
+    </EmphasisLink>
   )
 }
-
-export default Emphasis
