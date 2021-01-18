@@ -1,5 +1,4 @@
 ---
-path: '/ruby-threads-gil'
 title: 'Ruby Threads and the GIL'
 date: '2020-03-08'
 ---

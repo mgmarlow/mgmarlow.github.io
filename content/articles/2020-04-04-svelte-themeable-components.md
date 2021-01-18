@@ -1,5 +1,4 @@
 ---
-path: '/articles/themeable-svelte-components'
 title: 'Creating Themeable Svelte Components'
 date: '2020-04-05'
 ---

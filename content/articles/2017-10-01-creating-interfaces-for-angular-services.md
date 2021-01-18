@@ -1,5 +1,4 @@
 ---
-path: '/articles/creating-angular-service-interfaces'
 title: 'Creating Interfaces for Angular Services'
 date: '2017-10-01'
 ---

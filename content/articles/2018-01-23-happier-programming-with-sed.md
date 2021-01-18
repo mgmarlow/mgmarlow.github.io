@@ -1,5 +1,4 @@
 ---
-path: '/articles/happier-programming-with-sed'
 title: 'Happier Programming with sed'
 date: '2018-01-23'
 ---

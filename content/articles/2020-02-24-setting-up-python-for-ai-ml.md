@@ -1,5 +1,4 @@
 ---
-path: '/articles/setting-up-python-ai-ml'
 title: 'Python Virtual Environments for AI/ML'
 date: '2020-03-01'
 ---
@@ -114,7 +113,7 @@ base                  *  C:\Users\me\Miniconda3
 my-env                   C:\Users\me\Miniconda3\envs\my-env
 ```
 
-After an environment is created, it needs to be activated for use: 
+After an environment is created, it needs to be activated for use:
 
 ```
 (base) PS C:\Users\me> conda activate my-env
@@ -145,7 +144,7 @@ can be added with `conda install -n <ENVIRONMENT NAME>`. Otherwise,
 they'll need to be installed with `pip` like a normal Python package.
 
 > When using `pip`:
-> 
+>
 > Make sure that the desired environment is activated
 > before `pip` is run. e.g. if I want to install a package into `my-env`,
 > I first `conda activate my-env`, then run `pip install <package>`. This
@@ -177,7 +176,7 @@ the one I just created, `my-env`. Doing so will create a new folder,
 
 ```json
 {
-    "python.pythonPath": "C:\\Users\\me\\Miniconda3\\envs\\my-env\\python.exe"
+  "python.pythonPath": "C:\\Users\\me\\Miniconda3\\envs\\my-env\\python.exe"
 }
 ```
 
@@ -187,5 +186,5 @@ my selected virtual environment, `my-env`.
 
 ## References and more information
 
-* [Managing conda Environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
-* [Working with Jupyter Notebooks in Visual Studio Code](https://code.visualstudio.com/docs/python/jupyter-support)
+- [Managing conda Environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
+- [Working with Jupyter Notebooks in Visual Studio Code](https://code.visualstudio.com/docs/python/jupyter-support)

@@ -1,5 +1,4 @@
 ---
-path: '/articles/adaptable-data-stores-angular'
 title: 'Adaptable Data Stores in Angular'
 date: '2017-09-02'
 ---
@@ -61,7 +60,7 @@ export class HelloComponent {
   constructor(private appState: AppState) {}
 
   ngOnInit() {
-    this.appState.isRed.subscribe(redState => (this.isRed = redState))
+    this.appState.isRed.subscribe((redState) => (this.isRed = redState))
   }
 
   toggleRed() {

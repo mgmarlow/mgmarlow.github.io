@@ -1,5 +1,4 @@
 ---
-path: '/dice-rolling-discord-bot'
 title: 'Build a Dice-rolling Discord Bot with Ruby'
 date: '2021-01-01'
 ---
@@ -77,4 +76,3 @@ BOT_ENV=<YOUR BOT TOKEN HERE>
 Make sure that if you're tracking this file with git you add `.env` to your `.gitignore`.
 
 Now when you run the project you should see a `discordrb` server running. Go ahead and message `!roll` in the Discord server where the bot is operating. You should see the bot reply with "Hello, world!".
-

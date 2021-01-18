@@ -1,5 +1,4 @@
 ---
-path: '/articles/organizing-javascript-static-types'
 title: 'Organizing Types in Web Applications'
 date: '2019-04-08'
 ---

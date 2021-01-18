@@ -1,5 +1,4 @@
 ---
-path: '/articles/understanding-useselector-memoization'
 title: 'Understanding useSelector Memoization'
 date: '2019-08-17'
 ---
@@ -69,8 +68,8 @@ the store, rather than just the value of `show`.
 ```js
 function SnackList() {
   // Note: selecting state.snacks to demonstrate an inefficient selection
-  const snacks = useSelector(state => state.snacks)
-  const snackList = SNACKS.map(item => <li key={item.id}>{item.name}</li>)
+  const snacks = useSelector((state) => state.snacks)
+  const snackList = SNACKS.map((item) => <li key={item.id}>{item.name}</li>)
 
   console.log('SnackList rendering')
 

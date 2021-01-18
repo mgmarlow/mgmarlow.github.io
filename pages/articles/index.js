@@ -3,16 +3,17 @@ import Media from 'react-media'
 import Link from 'next/link'
 import Layout from '../../components/Layout'
 import SEO from '../../components/SEO'
-import styles from './index.module.css'
-
 import { getAllPosts } from '../../lib/blog'
+import styles from './index.module.css'
 
 export async function getStaticProps({ params }) {
   const posts = getAllPosts()
-  const slugs = posts.map((p) => p.slug)
-  console.log(slugs)
+  const postDetails = posts.map((p) => ({
+    slug: p.slug,
+    ...p.frontmatter,
+  }))
 
-  return { props: {} }
+  return { props: { posts: postDetails } }
 }
 
 export async function getStaticPaths() {
@@ -30,24 +31,24 @@ export async function getStaticPaths() {
   }
 }
 
-function PostLink({ node }) {
-  const { frontmatter } = node
+function PostLink({ post }) {
+  const path = `articles/${post.slug}`
 
   return (
     <Media query="(max-width: 600px)">
       {(matches) =>
         matches ? (
           <div className={styles.listItem}>
-            <Link href={frontmatter.path}>
-              <a>{frontmatter.title}</a>
+            <Link href={path}>
+              <a>{post.title}</a>
             </Link>
-            <div>{frontmatter.date}</div>
+            <div>{post.date}</div>
           </div>
         ) : (
           <>
-            <span className={styles.date}>{frontmatter.date}</span>
-            <Link href={frontmatter.path}>
-              <a>{frontmatter.title}</a>
+            <span className={styles.date}>{post.date}</span>
+            <Link href={path}>
+              <a>{post.title}</a>
             </Link>
           </>
         )
@@ -56,15 +57,10 @@ function PostLink({ node }) {
   )
 }
 
-export default function Articles(props) {
-  console.log(props)
-  return <>foo</>
-
-  const { edges } = data.allMarkdownRemark
-
-  const posts = edges.map(({ node }, i) => (
+export default function Articles({ posts }) {
+  const postItems = posts.map((post, i) => (
     <li key={i}>
-      <PostLink node={node} />
+      <PostLink post={post} />
     </li>
   ))
 
@@ -72,7 +68,7 @@ export default function Articles(props) {
     <Layout>
       <SEO />
 
-      <ul className={styles.list}>{posts}</ul>
+      <ul className={styles.list}>{postItems}</ul>
 
       <footer>
         <Link href="/">

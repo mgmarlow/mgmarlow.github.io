@@ -1,5 +1,4 @@
 ---
-path: '/undo-puzzle-games'
 title: 'Puzzle Game Design Patterns: Command'
 date: '2020-08-24'
 ---
