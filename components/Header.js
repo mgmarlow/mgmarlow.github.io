@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'gatsby'
+import Link from 'next/link'
 import PropTypes from 'prop-types'
 
 const activeClassName = 'active-header'
@@ -18,7 +18,7 @@ const HeaderLink = styled(Link).attrs({
 
 const Header = ({ siteTitle }) => (
   <header>
-    <HeaderLink to="/articles/">{siteTitle}</HeaderLink>
+    <HeaderLink href="/articles/"><a>{siteTitle}</a></HeaderLink>
   </header>
 )
 

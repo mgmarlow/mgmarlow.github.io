@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 import Media from 'react-media'
-import { Link } from 'gatsby'
+import Link from 'next/link'
 import styles from './BottomMatter.module.css'
 
 function BottomMatter({ className, prev, next }) {
@@ -15,13 +15,13 @@ function BottomMatter({ className, prev, next }) {
 
       <div className={styles.content}>
         {prev && (
-          <Link className={styles.leftLink} to={prev.frontmatter.path}>
-            {prev.frontmatter.title}
+          <Link className={styles.leftLink} href={prev.frontmatter.path}>
+            <a>{prev.frontmatter.title}</a>
           </Link>
         )}
         {next && (
-          <Link className={styles.rightLink} to={next.frontmatter.path}>
-            {next.frontmatter.title}
+          <Link className={styles.rightLink} href={next.frontmatter.path}>
+            <a>{next.frontmatter.title}</a>
           </Link>
         )}
       </div>

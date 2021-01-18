@@ -1,21 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { ThemeProvider } from 'styled-components'
-import { useStaticQuery, graphql } from 'gatsby'
 import Header from '../Header'
 import Container from '../Container'
 import DefaultTheme from './DefaultTheme'
+import config from '../../config'
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+  const siteTitle = config.title
 
   const theme = {
     style: 'light',
@@ -25,7 +17,7 @@ const Layout = ({ children }) => {
     <ThemeProvider theme={theme}>
       <DefaultTheme>
         <Container>
-          <Header siteTitle={data.site.siteMetadata.title} />
+          <Header siteTitle={siteTitle} />
           <main>{children}</main>
         </Container>
       </DefaultTheme>

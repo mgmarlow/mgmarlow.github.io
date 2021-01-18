@@ -1,25 +1,54 @@
 import React from 'react'
 import Media from 'react-media'
-import { graphql, Link } from 'gatsby'
-import Layout from '../components/Layout'
-import SEO from '../components/SEO'
-import styles from './articles.module.css'
+import Link from 'next/link'
+import Layout from '../../components/Layout'
+import SEO from '../../components/SEO'
+import styles from './index.module.css'
+
+import { getAllPosts } from '../../lib/blog'
+
+export async function getStaticProps({ params }) {
+  const posts = getAllPosts()
+  const slugs = posts.map((p) => p.slug)
+  console.log(slugs)
+
+  return { props: {} }
+}
+
+export async function getStaticPaths() {
+  const posts = getAllPosts()
+
+  return {
+    paths: posts.map((post) => {
+      return {
+        params: {
+          slug: post.slug,
+        },
+      }
+    }),
+    fallback: false,
+  }
+}
 
 function PostLink({ node }) {
   const { frontmatter } = node
 
   return (
     <Media query="(max-width: 600px)">
-      {matches =>
+      {(matches) =>
         matches ? (
           <div className={styles.listItem}>
-            <Link to={frontmatter.path}>{frontmatter.title}</Link>
+            <Link href={frontmatter.path}>
+              <a>{frontmatter.title}</a>
+            </Link>
             <div>{frontmatter.date}</div>
           </div>
         ) : (
           <>
             <span className={styles.date}>{frontmatter.date}</span>
-            <Link to={frontmatter.path}>{frontmatter.title}</Link>
+            <Link href={frontmatter.path}>
+              <a>{frontmatter.title}</a>
+            </Link>
           </>
         )
       }
@@ -27,7 +56,10 @@ function PostLink({ node }) {
   )
 }
 
-function Articles({ data }) {
+export default function Articles(props) {
+  console.log(props)
+  return <>foo</>
+
   const { edges } = data.allMarkdownRemark
 
   const posts = edges.map(({ node }, i) => (
@@ -43,7 +75,10 @@ function Articles({ data }) {
       <ul className={styles.list}>{posts}</ul>
 
       <footer>
-        <Link to="/">about</Link> •{' '}
+        <Link href="/">
+          <a>about</a>
+        </Link>{' '}
+        •{' '}
         <a rel="noreferrer" href="https://github.com/mgmarlow">
           github
         </a>{' '}
@@ -59,21 +94,3 @@ function Articles({ data }) {
     </Layout>
   )
 }
-
-export const query = graphql`
-  query HomepageQuery {
-    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
-      edges {
-        node {
-          frontmatter {
-            title
-            path
-            date
-          }
-        }
-      }
-    }
-  }
-`
-
-export default Articles

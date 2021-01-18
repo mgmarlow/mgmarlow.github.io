@@ -21,33 +21,33 @@ const About = () => {
               I am a software engineer currently working at{' '}
               <Emphasis
                 variant="blue"
-                to="https://mindbody.io/"
+                href="https://mindbody.io/"
                 outbound={true}
               >
-                Mindbody
+                <a>Mindbody</a>
               </Emphasis>
               . You can find my open source projects on{' '}
               <Emphasis
                 variant="yellow"
-                to="https://github.com/mgmarlow"
+                href="https://github.com/mgmarlow"
                 outbound={true}
               >
-                Github
+                <a>Github</a>
               </Emphasis>
               .
             </p>
             <p className={styles.paragraph}>
               Sometimes I write technical articles for my{' '}
-              <Emphasis variant="pink" to="/articles/">
-                blog
+              <Emphasis variant="pink" href="/articles/">
+                <a>blog</a>
               </Emphasis>
               . You can also check out what I'm{' '}
               <Emphasis
                 outbound={true}
-                to="https://techbookclub.dev/"
+                href="https://techbookclub.dev/"
                 variant="purple"
               >
-                reading
+                <a>reading</a>
               </Emphasis>
               .
             </p>

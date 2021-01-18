@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'gatsby'
+import Link from 'next/link'
 
 const EmphasisLink = styled(Link)`
   font-size: 1.5rem;
@@ -10,7 +10,7 @@ const EmphasisLink = styled(Link)`
   position: relative;
 
   &::after {
-    background-color: ${props => {
+    background-color: ${(props) => {
       switch (props.variant) {
         case 'yellow':
           return 'rgba(255, 222, 3, 0.4)'
@@ -41,19 +41,15 @@ const EmphasisLink = styled(Link)`
   }
 `
 
-const Emphasis = ({ children, to, variant, outbound }) => {
+const Emphasis = ({ children, href, variant, outbound }) => {
   const linkProps = outbound
     ? {
-        href: to,
+        href,
       }
-    : { to }
+    : { href }
 
   return (
-    <EmphasisLink
-      variant={variant}
-      as={outbound ? 'a' : Link}
-      {...linkProps}
-    >
+    <EmphasisLink variant={variant} as={outbound ? 'a' : Link} {...linkProps}>
       {children}
     </EmphasisLink>
   )
