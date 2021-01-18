@@ -1,4 +1,3 @@
-import React from 'react'
 import remark from 'remark'
 import prism from 'remark-prism'
 import html from 'remark-html'

@@ -1,4 +1,3 @@
-import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import SEO from '../components/SEO'
 import Emphasis from '../components/Emphasis'

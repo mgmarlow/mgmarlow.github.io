@@ -9,7 +9,6 @@ React makes theming components easy. My preferred way combines
 to create locally-scoped styles that can be easily modified:
 
 ```jsx
-import React from 'react'
 import classnames from 'classnames'
 import styles from './Themeable.module.css'
 

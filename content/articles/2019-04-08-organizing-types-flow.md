@@ -94,7 +94,7 @@ Example usage:
 
 ```jsx
 // @flow
-import React from 'react'
+
 import type { Article } from 'news-api'
 
 type Props = {
@@ -150,7 +150,7 @@ a few advantages.
 
 ```jsx
 // @flow
-import React from 'react'
+
 import type { Author } from '~/types'
 
 type Props = {
@@ -202,7 +202,7 @@ implementation, it makes perfect sense to export them together.
 
 ```jsx
 // @flow
-import React from 'react'
+
 
 export type I18n = {
   t: (string, string) => string,

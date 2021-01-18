@@ -1,4 +1,3 @@
-import React from 'react'
 import Media from 'react-media'
 import Link from 'next/link'
 import Layout from '../../components/Layout'

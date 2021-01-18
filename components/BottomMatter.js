@@ -1,4 +1,3 @@
-import React from 'react'
 import classnames from 'classnames'
 import Media from 'react-media'
 import Link from 'next/link'
@@ -8,7 +7,7 @@ function BottomMatter({ className, prev, next }) {
   return (
     <div className={classnames(className, styles.wrapper)}>
       <Media query="(max-width: 600px)">
-        {matches =>
+        {(matches) =>
           matches && <h4 className={styles.mobileHeader}>Other Articles</h4>
         }
       </Media>
