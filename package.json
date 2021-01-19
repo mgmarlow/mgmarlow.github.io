@@ -32,7 +32,7 @@
     "dev": "next dev",
     "build": "next build && next export",
     "start": "next start",
-    "deploy": "yarn run build && gh-pages -d out -b master",
+    "deploy": "yarn run build && gh-pages -d out -b deployment",
     "format": "prettier --write src/**/*.{js,jsx}"
   }
 }
