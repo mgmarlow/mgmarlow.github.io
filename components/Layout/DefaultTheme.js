@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 
+// TODO: Should probably remove margin/padding out of this file
+// and keep them set to 0.
 const GlobalStyle = createGlobalStyle`
 html,
 body {
@@ -11,6 +13,7 @@ body {
 
 body {
   margin: 0;
+  padding: 0;
 }
 
 body,

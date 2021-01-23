@@ -1,6 +1,7 @@
 import remark from 'remark'
 import prism from 'remark-prism'
 import html from 'remark-html'
+import readingTime from '../../lib/remarkReadingTime'
 import Layout from '../../components/Layout'
 import SEO from '../../components/SEO'
 import Footer from '../../components/Footer'
@@ -11,6 +12,7 @@ export async function getStaticProps({ params }) {
   const post = getPostBySlug(params.slug)
 
   const markdown = await remark()
+    .use(readingTime)
     .use(prism)
     .use(html)
     .process(post.content || '')
@@ -19,6 +21,7 @@ export async function getStaticProps({ params }) {
     props: {
       ...post.frontmatter,
       content: markdown.toString(),
+      readingTime: markdown.readingTime,
     },
   }
 }
@@ -30,7 +33,7 @@ export async function getStaticPaths() {
   return { paths, fallback: false }
 }
 
-export default function Post({ content, title, date }) {
+export default function Post({ content, title, date, readingTime }) {
   return (
     <>
       <SEO title={title} />
@@ -40,7 +43,9 @@ export default function Post({ content, title, date }) {
           <section>
             <div className={styles.titleWrapper}>
               <h1 className={styles.title}>{title}</h1>
-              <time>{date}</time>
+              <span>
+                <time>{date}</time>, {readingTime.text}
+              </span>
             </div>
             <div dangerouslySetInnerHTML={{ __html: content }}></div>
           </section>
