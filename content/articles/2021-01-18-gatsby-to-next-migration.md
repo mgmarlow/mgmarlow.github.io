@@ -110,7 +110,7 @@ This custom [`Document`](https://github.com/vercel/next.js/blob/master/examples/
 
 ## Github Pages deployments
 
-One last gotcha that is well explained in [James Wallis's blog post](https://dev.to/jameswallis/deploying-a-next-js-app-to-github-pages-24pn) involves Github pages deployments. If you're deploying a site that has its own dedicated repository, e.g. `github.com/mgmarlow/some-repo`, you need to configure Next.js's base paths to locate assets in the proper directory.
+One last gotcha that is well explained in [James Wallis's blog post](https://dev.to/jameswallis/deploying-a-next-js-app-to-github-pages-24pn) involves Github Pages deployments. If you're deploying a site that has its own dedicated repository, e.g. `github.com/mgmarlow/some-repo`, you need to configure Next.js's base paths to locate assets in the proper directory.
 
 Add the following to `next.config.js`, substituting `some-repo` with the name of your respository.
 
@@ -121,3 +121,10 @@ module.exports = {
   assetPrefix: '/some-repo/',
 }
 ```
+
+## Was it worth it?
+
+Absolutely. Thanks to the [Next.js migration guide](https://nextjs.org/docs/migrating/from-gatsby), the entire process took me less than a few hours. The result is an application that is easy to understand and even easier to extend.
+
+If nothing else, migrating to Next.js has convinced me that Gatsby's GraphQL infrastructure is over-engineered, especially for blogs. The advantages of a rich plugin ecosystem are outweighed by the sheer number of configuration files dependent on esoteric APIs.
+
