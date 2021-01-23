@@ -9,16 +9,16 @@ import styles from './[slug].module.css'
 
 export async function getStaticProps({ params }) {
   const post = getPostBySlug(params.slug)
+
   const markdown = await remark()
     .use(prism)
     .use(html)
     .process(post.content || '')
-  const content = markdown.toString()
 
   return {
     props: {
       ...post.frontmatter,
-      content,
+      content: markdown.toString(),
     },
   }
 }

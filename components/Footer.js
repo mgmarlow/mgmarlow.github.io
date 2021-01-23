@@ -3,11 +3,16 @@ import styles from './Footer.module.css'
 
 const Footer = () => (
   <footer className={styles.footer}>
-    <p className={styles.textCentered}>
+    <p>
       <Link href="/">
-        <a>mgmarlow.github.io</a>
+        <a>mgmarlow.com</a>
       </Link>{' '}
-      by Graham Marlow
+      by Graham Marlow.
+    </p>
+    <p>
+      Made with {'<'}
+      <a href="https://nextjs.org/">insert JS framework here</a>
+      {'>'}.
     </p>
   </footer>
 )
