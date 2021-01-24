@@ -16,21 +16,29 @@ export async function getStaticProps({ params }) {
 }
 
 const ListItem = styled.div`
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 `
 
-const LinkTitle = styled.h3`
+const LinkTitle = styled.h2`
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    font-size: 1.25rem;
+  }
 `
 
-function PostLink({ post }) {
+const PostLink = styled.a`
+  text-decoration: none;
+`
+
+function PostItem({ post }) {
   const path = `articles/${post.slug}`
 
   return (
     <ListItem>
       <Link href={path}>
         <LinkTitle>
-          <a>{post.title}</a>
+          <PostLink>{post.title}</PostLink>
         </LinkTitle>
       </Link>
 
@@ -50,7 +58,7 @@ const List = styled.ul`
 export default function Articles({ posts }) {
   const postItems = posts.map((post, i) => (
     <li key={i}>
-      <PostLink post={post} />
+      <PostItem post={post} />
     </li>
   ))
 
@@ -68,14 +76,6 @@ export default function Articles({ posts }) {
           •{' '}
           <a rel="noreferrer" href="https://github.com/mgmarlow">
             github
-          </a>{' '}
-          •{' '}
-          <a
-            href="https://mgmarlow.github.io/rss.xml"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            rss
           </a>
         </footer>
       </Layout>
