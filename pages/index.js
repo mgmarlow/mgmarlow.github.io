@@ -18,7 +18,7 @@ const P = styled.p`
 export default function Home() {
   return (
     <>
-      <SEO title="mgmarlow.com" excludeTemplate={true} />
+      <SEO title="mgmarlow.com" />
 
       <ThemeProvider>
         <Container>
