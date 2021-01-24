@@ -1,7 +1,8 @@
-import { createGlobalStyle } from 'styled-components'
+import {
+  ThemeProvider as StyledThemeProvider,
+  createGlobalStyle,
+} from 'styled-components'
 
-// TODO: Should probably remove margin/padding out of this file
-// and keep them set to 0.
 const GlobalStyle = createGlobalStyle`
 html,
 body {
@@ -9,11 +10,6 @@ body {
     props.theme.style === 'light' ? '#ffffff' : '#131217'};
   font-feature-settings: 'kern' 1;
   font-kerning: normal;
-}
-
-body {
-  margin: 0;
-  padding: 0;
 }
 
 body,
@@ -45,22 +41,6 @@ code {
   font-family: 'Source Code Pro', 'Courier New', Courier, monospace;
   font-weight: 400;
   font-style: normal;
-  margin: 1rem 0;
-}
-
-.remark-highlight {
-  margin: 0 -80px;
-}
-
-@media (max-width: 1000px) {
-  .remark-highlight {
-    margin: 0 -1rem;
-  }
-}
-
-img {
-  margin: 1rem 0;
-  width: 100%;
 }
 
 html {
@@ -92,26 +72,17 @@ h6 {
   font-size: 1rem;
 }
 
-p {
-  margin: 1.75rem 0;
-}
-
-p,
-li,
-a {
-  color: ${(props) => (props.theme.style === 'light' ? '#333333' : '#cbcbcc')};
-  line-height: 1.5;
-  font-size: 1.25rem;
-}
-
 pre,
 code,
 code.language-text {
   font-size: 1rem;
 }
 
+p,
 li {
-  margin-bottom: 0.75rem;
+  color: ${(props) => (props.theme.style === 'light' ? '#333333' : '#cbcbcc')};
+  line-height: 1.5;
+  font-size: 1.25rem;
 }
 
 a {
@@ -136,7 +107,6 @@ blockquote > p {
 
 @media (max-width: 600px) {
   p,
-  a,
   li {
     font-size: 1.1rem;
   }
@@ -149,13 +119,15 @@ blockquote > p {
 }
 `
 
-const DefaultTheme = ({ children }) => {
+export default function ThemeProvider({ theme, children }) {
   return (
-    <>
+    <StyledThemeProvider theme={theme}>
       <GlobalStyle />
       {children}
-    </>
+    </StyledThemeProvider>
   )
 }
 
-export default DefaultTheme
+ThemeProvider.defaultProps = {
+  theme: { style: 'light' },
+}

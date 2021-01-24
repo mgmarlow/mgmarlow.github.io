@@ -1,18 +1,40 @@
 import remark from 'remark'
 import prism from 'remark-prism'
 import html from 'remark-html'
-import readingTime from '../../lib/remarkReadingTime'
+import styled, { createGlobalStyle } from 'styled-components'
 import Layout from '../../components/Layout'
 import SEO from '../../components/SEO'
 import Footer from '../../components/Footer'
 import { getPostBySlug, getAllPosts } from '../../lib/blog'
-import styles from './[slug].module.css'
+
+const GlobalStyle = createGlobalStyle`
+  .remark-highlight {
+    margin: 1rem -80px;
+  }
+
+  @media (max-width: 1000px) {
+    .remark-highlight {
+      margin: 0 -1rem;
+    }
+  }
+
+  li {
+    margin-bottom: 0.75rem;
+  }
+
+  h2 {
+    margin-top: 3rem;
+  }
+
+  p {
+    margin: 1.75rem 0;
+  }
+`
 
 export async function getStaticProps({ params }) {
   const post = getPostBySlug(params.slug)
 
   const markdown = await remark()
-    .use(readingTime)
     .use(prism)
     .use(html)
     .process(post.content || '')
@@ -21,7 +43,7 @@ export async function getStaticProps({ params }) {
     props: {
       ...post.frontmatter,
       content: markdown.toString(),
-      readingTime: markdown.readingTime,
+      readingTime: post.readingTime,
     },
   }
 }
@@ -33,27 +55,35 @@ export async function getStaticPaths() {
   return { paths, fallback: false }
 }
 
+const TitleContainer = styled.div`
+  margin: 2rem 0;
+`
+
+const Title = styled.h1`
+  margin: 0.85rem 0;
+`
+
 export default function Post({ content, title, date, readingTime }) {
   return (
     <>
       <SEO title={title} />
 
       <Layout>
+        <GlobalStyle />
+
         <article>
           <section>
-            <div className={styles.titleWrapper}>
-              <h1 className={styles.title}>{title}</h1>
+            <TitleContainer>
+              <Title>{title}</Title>
               <span>
                 <time>{date}</time>, {readingTime.text}
               </span>
-            </div>
+            </TitleContainer>
             <div dangerouslySetInnerHTML={{ __html: content }}></div>
           </section>
         </article>
       </Layout>
 
-      {/* TODO: */}
-      {/* <BottomMatter className={styles.footer} prev={prev} next={next} /> */}
       <Footer />
     </>
   )
