@@ -1,4 +1,7 @@
-import { createGlobalStyle } from 'styled-components'
+import {
+  ThemeProvider as StyledThemeProvider,
+  createGlobalStyle,
+} from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
 html,
@@ -116,13 +119,15 @@ blockquote > p {
 }
 `
 
-const DefaultTheme = ({ children }) => {
+export default function ThemeProvider({ theme, children }) {
   return (
-    <>
+    <StyledThemeProvider theme={theme}>
       <GlobalStyle />
       {children}
-    </>
+    </StyledThemeProvider>
   )
 }
 
-export default DefaultTheme
+ThemeProvider.defaultProps = {
+  theme: { style: 'light' },
+}

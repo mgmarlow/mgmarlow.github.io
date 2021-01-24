@@ -42,28 +42,30 @@ export default function Articles({ posts }) {
   ))
 
   return (
-    <Layout>
+    <>
       <SEO />
 
-      <ul className={styles.list}>{postItems}</ul>
+      <Layout>
+        <ul className={styles.list}>{postItems}</ul>
 
-      <footer>
-        <Link href="/">
-          <a>about</a>
-        </Link>{' '}
-        •{' '}
-        <a rel="noreferrer" href="https://github.com/mgmarlow">
-          github
-        </a>{' '}
-        •{' '}
-        <a
-          href="https://mgmarlow.github.io/rss.xml"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          rss
-        </a>
-      </footer>
-    </Layout>
+        <footer>
+          <Link href="/">
+            <a>about</a>
+          </Link>{' '}
+          •{' '}
+          <a rel="noreferrer" href="https://github.com/mgmarlow">
+            github
+          </a>{' '}
+          •{' '}
+          <a
+            href="https://mgmarlow.github.io/rss.xml"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            rss
+          </a>
+        </footer>
+      </Layout>
+    </>
   )
 }

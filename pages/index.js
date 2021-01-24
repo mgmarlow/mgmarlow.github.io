@@ -1,23 +1,30 @@
-import { ThemeProvider } from 'styled-components'
+import styled from 'styled-components'
 import SEO from '../components/SEO'
 import Emphasis from '../components/Emphasis'
 import Link from 'next/link'
-import DefaultTheme from '../components/Layout/DefaultTheme'
-import styles from './index.module.css'
+import ThemeProvider from '../components/ThemeProvider'
 
-const About = () => {
-  const theme = {
-    style: 'light',
-  }
+const Container = styled.div`
+  box-sizing: content-box;
+  max-width: 425px;
+  padding: 5vh 10vw;
+`
 
+const P = styled.p`
+  margin: 1.75rem 0;
+  font-size: 1.5rem;
+`
+
+export default function Home() {
   return (
-    <ThemeProvider theme={theme}>
-      <DefaultTheme>
-        <div className={styles.container}>
-          <SEO title="mgmarlow.com" excludeTemplate={true} />
+    <>
+      <SEO title="mgmarlow.com" excludeTemplate={true} />
+
+      <ThemeProvider>
+        <Container>
           <article>
             <h1>Graham Marlow</h1>
-            <p className={styles.paragraph}>
+            <P>
               I am a software engineer currently working at{' '}
               <Emphasis variant="blue" href="https://mindbody.io/">
                 Mindbody
@@ -27,8 +34,8 @@ const About = () => {
                 Github
               </Emphasis>
               .
-            </p>
-            <p className={styles.paragraph}>
+            </P>
+            <P>
               Sometimes I write technical articles for my{' '}
               <Link href="/articles/" passHref>
                 <Emphasis variant="pink" href="/articles">
@@ -40,12 +47,10 @@ const About = () => {
                 reading
               </Emphasis>
               .
-            </p>
+            </P>
           </article>
-        </div>
-      </DefaultTheme>
-    </ThemeProvider>
+        </Container>
+      </ThemeProvider>
+    </>
   )
 }
-
-export default About
