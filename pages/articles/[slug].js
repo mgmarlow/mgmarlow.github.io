@@ -23,22 +23,9 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: underline;
   }
 
-  blockquote {
-    margin: 1rem;
-    padding-left: 1rem;
-    border-left: 5px solid #828282;
-  }
-
-  li {
-    margin-bottom: 0.75rem;
-  }
-
-  h2 {
-    margin-top: 3rem;
-  }
-
-  p {
-    margin: 1.75rem 0;
+  // Return bulma's default code size that is overridden by Prism.
+  code[class*="language-"], pre[class*="language-"] {
+    font-size: 0.875em;
   }
 `
 
@@ -84,13 +71,16 @@ export default function Post({ content, title, date, readingTime }) {
 
         <article>
           <section>
-            <TitleContainer>
-              <Title>{title}</Title>
-              <span>
-                <time>{date}</time>, {readingTime.text}
-              </span>
-            </TitleContainer>
-            <div dangerouslySetInnerHTML={{ __html: content }}></div>
+            <div className="content is-medium">
+              <TitleContainer>
+                <Title>{title}</Title>
+                <span>
+                  <time>{date}</time>, {readingTime.text}
+                </span>
+              </TitleContainer>
+
+              <div dangerouslySetInnerHTML={{ __html: content }}></div>
+            </div>
           </section>
         </article>
       </Layout>

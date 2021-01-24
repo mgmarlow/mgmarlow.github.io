@@ -21,7 +21,7 @@ export default function Home() {
 
       <Container>
         <article>
-          <h1>Graham Marlow</h1>
+          <h1 className="is-size-3">Graham Marlow</h1>
           <P>
             I am a software engineer currently working at{' '}
             <Emphasis variant="blue" href="https://mindbody.io/">

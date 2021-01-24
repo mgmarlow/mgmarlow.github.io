@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import Link from 'next/link'
 import Layout from '../../components/Layout'
 import SEO from '../../components/SEO'
+import Footer from '../../components/Footer'
 import { getAllPosts } from '../../lib/blog'
 
 export async function getStaticProps({ params }) {
@@ -21,10 +22,6 @@ const ListItem = styled.div`
 
 const LinkTitle = styled.h2`
   cursor: pointer;
-
-  @media (max-width: 768px) {
-    font-size: 1.25rem;
-  }
 `
 
 const PostLink = styled.a`
@@ -37,14 +34,14 @@ function PostItem({ post }) {
   return (
     <ListItem>
       <Link href={path}>
-        <LinkTitle>
+        <LinkTitle className="is-size-3 is-size-5-mobile">
           <PostLink>{post.title}</PostLink>
         </LinkTitle>
       </Link>
 
-      <div>
+      <p>
         {post.date}, {post.readingTime.text}
-      </div>
+      </p>
     </ListItem>
   )
 }
@@ -68,17 +65,9 @@ export default function Articles({ posts }) {
 
       <Layout>
         <List>{postItems}</List>
-
-        <footer>
-          <Link href="/">
-            <a>about</a>
-          </Link>{' '}
-          •{' '}
-          <a rel="noreferrer" href="https://github.com/mgmarlow">
-            github
-          </a>
-        </footer>
       </Layout>
+
+      <Footer />
     </>
   )
 }
