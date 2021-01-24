@@ -1,4 +1,5 @@
 .container {
+  box-sizing: content-box;
   max-width: 425px;
   padding: 5vh 10vw;
 }

@@ -1,18 +1,41 @@
 import remark from 'remark'
 import prism from 'remark-prism'
 import html from 'remark-html'
-import readingTime from '../../lib/remarkReadingTime'
+import { createGlobalStyle } from 'styled-components'
 import Layout from '../../components/Layout'
 import SEO from '../../components/SEO'
 import Footer from '../../components/Footer'
 import { getPostBySlug, getAllPosts } from '../../lib/blog'
 import styles from './[slug].module.css'
 
+const GlobalStyle = createGlobalStyle`
+  .remark-highlight {
+    margin: 1rem -80px;
+  }
+
+  @media (max-width: 1000px) {
+    .remark-highlight {
+      margin: 0 -1rem;
+    }
+  }
+
+  li {
+    margin-bottom: 0.75rem;
+  }
+
+  h2 {
+    margin-top: 3rem;
+  }
+
+  p {
+    margin: 1.75rem 0;
+  }
+`
+
 export async function getStaticProps({ params }) {
   const post = getPostBySlug(params.slug)
 
   const markdown = await remark()
-    .use(readingTime)
     .use(prism)
     .use(html)
     .process(post.content || '')
@@ -21,7 +44,7 @@ export async function getStaticProps({ params }) {
     props: {
       ...post.frontmatter,
       content: markdown.toString(),
-      readingTime: markdown.readingTime,
+      readingTime: post.readingTime,
     },
   }
 }
@@ -39,6 +62,8 @@ export default function Post({ content, title, date, readingTime }) {
       <SEO title={title} />
 
       <Layout>
+        <GlobalStyle />
+
         <article>
           <section>
             <div className={styles.titleWrapper}>

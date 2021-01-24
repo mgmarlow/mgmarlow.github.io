@@ -5,8 +5,6 @@ import Container from '../Container'
 import DefaultTheme from './DefaultTheme'
 import config from '../../config'
 
-// TODO: Maybe have separate layout component for
-// posts since they need specific margins?
 const Layout = ({ children }) => {
   const siteTitle = config.title
 

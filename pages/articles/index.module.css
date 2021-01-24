@@ -4,10 +4,10 @@
   padding: 0;
 }
 
-.date {
-  margin-right: 1rem;
+.listItem {
+  margin-bottom: 1.5rem;
 }
 
-.listItem {
-  margin-bottom: 1rem;
+.link {
+  cursor: pointer;
 }

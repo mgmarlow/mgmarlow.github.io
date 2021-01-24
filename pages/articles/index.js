@@ -9,6 +9,7 @@ export async function getStaticProps({ params }) {
   const posts = getAllPosts()
   const postDetails = posts.map((p) => ({
     slug: p.slug,
+    readingTime: p.readingTime,
     ...p.frontmatter,
   }))
 
@@ -19,25 +20,17 @@ function PostLink({ post }) {
   const path = `articles/${post.slug}`
 
   return (
-    <Media query="(max-width: 600px)">
-      {(matches) =>
-        matches ? (
-          <div className={styles.listItem}>
-            <Link href={path}>
-              <a>{post.title}</a>
-            </Link>
-            <div>{post.date}</div>
-          </div>
-        ) : (
-          <>
-            <span className={styles.date}>{post.date}</span>
-            <Link href={path}>
-              <a>{post.title}</a>
-            </Link>
-          </>
-        )
-      }
-    </Media>
+    <div className={styles.listItem}>
+      <Link href={path}>
+        <h3 className={styles.link}>
+          <a>{post.title}</a>
+        </h3>
+      </Link>
+
+      <div>
+        {post.date}, {post.readingTime.text}
+      </div>
+    </div>
   )
 }
 
