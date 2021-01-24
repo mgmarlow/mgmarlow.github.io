@@ -18,6 +18,17 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  a {
+    text-decoration-skip-ink: none;
+    text-decoration: underline;
+  }
+
+  blockquote {
+    margin: 1rem;
+    padding-left: 1rem;
+    border-left: 5px solid #828282;
+  }
+
   li {
     margin-bottom: 0.75rem;
   }
