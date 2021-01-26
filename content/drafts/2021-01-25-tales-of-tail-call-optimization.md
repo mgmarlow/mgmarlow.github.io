@@ -34,4 +34,19 @@ With Dr. Axel's [maximum call stack function](https://2ality.com/2014/04/call-st
 Note that this is likely an inaccurate number for the real maximum number of calls, as that probably varies based on the context of the function used, available system memory, and other variables. This example is meant to illustrate that an upper bound does exist and that upper bound depends on the particular vendor's ECMAScript implementation.
 
 
+### Research!
+
+[https://github.com/tc39/proposal-ptc-syntax#issues-with-ptc](https://github.com/tc39/proposal-ptc-syntax#issues-with-ptc)
+
+[https://github.com/tc39/proposal-ptc-syntax/issues/23](https://github.com/tc39/proposal-ptc-syntax/issues/23)
+
+[https://v8.dev/blog/modern-javascript#proper-tail-calls](https://v8.dev/blog/modern-javascript#proper-tail-calls)
+
+[https://dev.to/snird/recursion-optimization-in-js-where-is-it-ptc-tco-and-fud-4fka](https://dev.to/snird/recursion-optimization-in-js-where-is-it-ptc-tco-and-fud-4fka)
+
+**A note for the pedantic: PTC vs. TCO**
+
+- Proper tail calls: not storing call stack information by passing data through each function.
+- Tail call optimization: Converting recursive functions to iterative functions.
+
 
