@@ -3,77 +3,45 @@ title: 'Adaptable Data Stores in Angular'
 date: '2017-09-02'
 ---
 
-One of the most interesting issues addressed during application development is managing state. New paradigms have changed the way web applications deal with and manipulate their state, deviating from the two-way data binding mechanisms of AngularJS to a more functional uni-directional flow with React and Redux. Now that Angular has been out for a while and is approaching “stability”, the same questions arise on how to best manage application state. Sending and manipulating data through `@Input` bindings and `@Output` events can works great for small applications but quickly becomes unwieldy as an application grows.
-For those wanting to work without third-party dependencies, Angular provides a couple tools that address most state-management concerns:
+Managing state is at the core of client-side development. Recent paradigms have changed the way web applications manipulate and manage their state, transitioning from the two-way data binding mechanisms of AngularJS to the uni-directional flow of React and Redux.
 
-- `@Input` and `@Output`: pass state through a chain of components by wiring up event emitters and component-level bindings
+With Angular 2 approaching "stability", time-old questions arise on how to best manage application state. Out of the box, Angular provides the following tools:
 
-- Providers/Services: Carefully manage data with dependency injection
+- `@Input` and `@Output`: pass state through a chain of components by wiring up event emitters and component-level bindings.
 
-In this article I am going to discuss a pattern for the service approach to state management that I have found particularly useful when an application needs more flexibility than component bindings.
+- Providers or services: separate classes that encapsulate state and are injected into components.
 
-## @Input and @Output
+Although the `@Input` and `@Output` decorators work great for small components, large components quickly scale out of control. Services offer more flexibility, but do so with less guidance. What is the best way of encapsulating state in a service and how should it be used?
 
-These `@Input` and `@Output` keywords are familiar to all Angular developers, as they provide the most straightforward (and often the most used) approach to managing state. With careful component construction, shared state lives in parent components that spread that state to many children, a process that visually resembles a tree. Any time a child wishes to update the parent’s state, they must do so through an `@Output` binding. This provides a clear separation for the state shared throughout the parent-child relationship.
+This article provides answers to those question with a scalable service pattern called the **data store**.
 
-The `@Input` component hierarchy works great for small applications or isolated component groups. However, this model falters when expanding an application. When new components are introduced that are far away in the component hierarchy from the original source of the data it becomes difficult to communicate with those components. In these situations, services are utilized to ferry data between components.
+## The problem with component bindings
 
-Although the service is a great solution to this problem it is often poorly
-implemented. Because the data contained in these services is often mutable
-(most applications have their state modeled in arrays or objects) consumers of
-said service have to be careful about how they utilize it, lest they produce
-[side-effects](https://softwareengineering.stackexchange.com/questions/40297/what-is-a-side-effect).
-Additionally, services that have too much logic can be a pain to
-maintain as their functionality is often used in so many places throughout an
-application.
+Component bindings are a great way of managing UI state within a single component. They are _not_ a great way of sharing that state throughout the application.
 
-## Data Management with Services
+The problem isn't recognizing this fact, it's understanding when component bindings need to be migrated to a service. The signs often appear as painpoints:
 
-When dealing with a large application we want to avoid services that contain too much logic and cover a lot of mutable data. Therefore, I propose a simple way to approach state management with services in the form of a “data store”.
+- Components are difficult to refactor because their bindings are used in many places in the component hierarchy.
 
-The idea behind the data store is threefold:
+- New features are bug-prone because they interact in different ways with the same underlying component data.
 
-1. Isolate a piece of data into a service so that it can be shared throughout an application
+- A new component that lives in a completely different section of the app needs to consume and manipulate the original data.
 
-2. Moderate all mutations to this data so that the changes can be easily tracked
+These painpoints all point towards a common problem: the data in the source component needs to be migrated into a separate place that is well-encapsulated. Ideally, the store should be implemented using side-effect free functions to reveal its intention and prevent misuse.
 
-3. Limit the degree to which the state can be changed to prevent unwanted side-effects.
+## Designing better services
 
-Imagine we have an application that is going to contain data complex enough that we cannot solely rely on `@Input` and `@Output` bindings. In this app, we want to toggle the color of a title with a button by calling into our data store and changing the data across the whole application. Perhaps we have a number of different panels, articles, and pages that offer this toggling functionality that all live in different areas of the application.
+Construct services as **data stores**:
 
-The component that I’m describing looks like the following:
+1. Isolate a piece of data into a service so that it can be shared throughout an application.
 
-```typescript
-import { Component, Input, HostBinding } from '@angular/core'
-import { AppState } from './app.state'
+2. Manage all mutations to this data so that changes are easily tracked.
 
-@Component({
-  selector: 'hello',
-  template: `
-    <h1>Hello Data Store!</h1>
-    <button (click)="toggleRed()">Toggle Red</button>
-  `,
-})
-export class HelloComponent {
-  @HostBinding('class.red') isRed = false
+3. Alert subscribers when the data is updated with new values.
 
-  constructor(private appState: AppState) {}
+4. Expose functions with single responsibilities to prevent side-effects.
 
-  ngOnInit() {
-    this.appState.isRed.subscribe((redState) => (this.isRed = redState))
-  }
-
-  toggleRed() {
-    this.appState.toggleRed()
-  }
-}
-```
-
-Although this component is rather simple, the core principles of the data store still apply. Within the component we pass in our data store through Angular’s built in DI with the line: `constructor(private appState: AppState) {}` so that we can access application state in the component. Within the `ngOnInit()` lifecycle function, we subscribe to the application’s state (in this case, a boolean) that will provide us fresh new state each time the store is changed. In order to toggle the color of the text, we tap into a method that manipulates the store’s data through the store itself, `this.appState.toggleRed()`.
-
-Thanks to the subscription, the store contains the most up-to-date application data. Any time the data is changed all subscribers to the store (e.g. this component) will be automatically updated. With the help of the private BehaviorSubject, any component that wants to change state on the store has to do so through the store itself, ensuring that no one is able to manipulate data in a way that will break the application.
-
-Here is the data store service from the sample application:
+Here's an example **data store** that stores a `boolean` value:
 
 ```typescript
 import { Injectable } from '@angular/core'
@@ -91,20 +59,56 @@ export class AppState {
 }
 ```
 
-There are three main techniques going on in the above code. The first is the actual data inside our application is private to the data store, unchangeable by any consuming component. The line `private _isRed = new BehaviorSubject<boolean>(false);` initializes this private data with RxJS’s BehaviorSubject, used to represent a value that can change over time. A BehaviorSubject is used over a regular Subject because it can be provided an initial value, in this case: `false`.
+Key implementation ideas:
 
-Second, the data within the store is exposed through an RxJS [Observable](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html),
-allowing consumers to receive the most up-to-date data without being able to directly modify it (through subscribing). Since an Observable cannot be directly changed, the data within our store is safe and isolated.
+- The underlying data `_isRed` is private to the data store.
 
-Finally, to allow consumers to change the data in the data store, an API is provided that will force all changes to go through the store itself. This prevents the need to keep track of all components that interact with this data in order to trace changes made to it. When the component from our sample application wishes to change the color of its text, for example, it has to do so by calling the `toggleRed` method available in the data store. Only then will the data store dictate how it will update its data.
+- `_isRed` is an instance of a [`BehaviorSubject`](https://rxjs.dev/api/index/class/BehaviorSubject) instead of a [`Subject`](https://rxjs.dev/api/index/class/Subject) so it can provide an initial value.
 
-## Conclusion
+- The data is exposed via a [RxJS Observable](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html) so components can listen to changes in the data.
 
-The data store service model requires a bit of extra code to get going but it offers numerous advantages over simply storing the data directly on a property of a service. Not only is the data isolated to a single source, it is easier to manage changes and updates through the backing API. By utilizing many of these stores for isolated groups of data in an application (think: `PhoneNumberStore`, `EmailStore`, `LoginStore`, etc.) it becomes much easier to manage the complexity of a large application.
+- A method on the service, `#toggleRed`, provides a single point of access for updating the data within the store.
 
-Although I don’t mention it above, there are also numerous third-party libraries that provide different solutions to the problem of state management. My personal favorite is [ngrx](https://github.com/ngrx),
-a library that provides a heavily Redux-inspired approach to application management. These libraries come with the cost of additional configuration and up-front learning, but can prove useful for applications with complex data needs.
+RxJS is pulling a lot of weight with this technique. Consuming components cannot directly read from the **data store**. Instead, components must subscribe to an [Observable](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html) that notifies them with updates.
 
-## Resources
+Likewise, consuming components cannot mutate data in the **data store**. They are limited to updating it with new values via [`#next`](https://rxjs.dev/api/index/class/BehaviorSubject#next).
 
-- [View the interactive source code](https://stackblitz.com/edit/angular-pah1j1).
+## Example component
+
+`HelloComponent` consumes the data store from the previous example, using the data to toggle a class:
+
+```typescript
+import { Component, Input, HostBinding } from '@angular/core'
+import { AppState } from './app.state'
+
+@Component({
+  selector: 'hello',
+  template: `
+    <h1>Hello Data Store!</h1>
+    <button (click)="toggleRed()">Toggle Red</button>
+  `,
+})
+export class HelloComponent {
+  @HostBinding('class.red') isRed = false
+
+  # Inject the data store as a regular service
+  constructor(private appState: AppState) {}
+
+  ngOnInit() {
+    # Subscribe to changes in the data store
+    this.appState.isRed.subscribe((redState) => {
+      this.isRed = redState
+    })
+  }
+
+  toggleRed() {
+    # Update the data store
+    this.appState.toggleRed()
+  }
+}
+```
+
+[View the full example here](https://stackblitz.com/edit/angular-pah1j1).
+
+Although this example has only one consumer of `AppState`, you can imagine that any number of components can subscribe to the data store at any given time. With so many components accessing this state, the **data store** paradigm helps minimize surprises by encapsulating it in RxJS primitives.
+
