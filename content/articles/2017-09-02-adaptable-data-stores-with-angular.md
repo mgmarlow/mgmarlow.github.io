@@ -91,18 +91,18 @@ import { AppState } from './app.state'
 export class HelloComponent {
   @HostBinding('class.red') isRed = false
 
-  # Inject the data store as a regular service
+  // Inject the data store as a regular service
   constructor(private appState: AppState) {}
 
   ngOnInit() {
-    # Subscribe to changes in the data store
+    // Subscribe to changes in the data store
     this.appState.isRed.subscribe((redState) => {
       this.isRed = redState
     })
   }
 
   toggleRed() {
-    # Update the data store
+    // Update the data store
     this.appState.toggleRed()
   }
 }
