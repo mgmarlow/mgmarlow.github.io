@@ -1,13 +1,41 @@
 ---
-title: 'Happier Programming with sed'
+title: 'Learn sed, Save Time'
 date: '2018-01-23'
 ---
 
-Okay, I will admit that is a bit of a contentious title. However, after this classic command line utility saved me hours of repetitive work I felt it needed to be said.
+`sed` has one of the most understated [introductions](https://www.gnu.org/software/sed/manual/sed.html#Introduction) in the history of linux commands:
 
-## An Ideal Use Case
+> `sed` is a stream editor. A stream editor is used to perform basic text transformations on an input stream (a file or input from a pipeline).
 
-In the earlier days of TypeScript, string enums did not exist. There were, however, several different workarounds that accomplished a similar goal. The variant that my company used internally involved creating a class with a number of static getters that returned string values. For example,
+Factual, but criminally dull.
+
+Don't let this description drive you away. `sed` will save you hours of repetitive work.
+
+## What is `sed`?
+
+`sed` is a fancy find-and-replace tool that you run from the command-line. Its flexibility far outweighs anything supported by modern editors.
+
+The [overview examples](https://www.gnu.org/software/sed/manual/sed.html#Overview) do a good job introducing its purpose. The following command replaces all occurrences of "hello" with "world", outputting the result to a new file, `output.txt`.
+
+```shell
+sed 's/hello/world/' input.txt > output.txt
+```
+
+OK, straightforward enough. Time to jump ahead.
+
+This snippet "matches words starting with any character, followed by the letter 'o', followed by the same character as the first" without performing replacement:
+
+```shell
+sed -E -n '/^(.)o\1$/p' /usr/share/dict/words
+```
+
+Whoa, too far.
+
+As you can tell, there's a lot of content in [the manual](https://www.gnu.org/software/sed/manual/sed.html) to sink your teeth into. For brevity, I'll focus on an example showcasing how I used `sed` to handle a massive TypeScript refactor.
+
+## Codemoding TypeScript
+
+In the earlier days of TypeScript, string enums did not exist. The most common workaround used a class with static getter methods. For example:
 
 ```typescript
 export class BillingMethod {
@@ -26,23 +54,25 @@ export class BillingMethod {
 const billingMethod = BillingMethod.Cash
 ```
 
-This method provides most of the benefits of a traditional enum, but it misses out on the enum’s biggest advantage: providing proper type support for the data structure. Each of the above getter functions returns a string, rather than a custom type.
+Although this method supports an enum-like syntax, it lacks proper types. Each of the getter functions returns a string instead of an accurate type.
 
-When TypeScript 2.4 announced [string enum support](https://blogs.msdn.microsoft.com/typescript/2017/06/27/announcing-typescript-2-4/), it was obvious that a refactor was necessary to enable proper typing throughout our application. But how were we going to replace the hundreds of exported classes with their enum counterparts?
+TypeScript 2.4's [string enum support](https://blogs.msdn.microsoft.com/typescript/2017/06/27/announcing-typescript-2-4/) warranted refactoring every fake enum in the application. But who wants to update the hundred-something classes?
 
-The answer, of course, is sed. With one simple script, we can turn the original, imitation enum into a real one:
+Luckily, `sed` makes the task easy.
 
-```sh
+The following script changes imitation enums into real ones:
+
+```shell
 sed \
  -i \
  -e 's/class/enum/' \
  -e 's/static get //' \
  -e 's/() { return/ =/' \
  -e 's/; }/,/' \
- ./billing-method.ts
+  ./constants/\*.ts
 ```
 
-Outputs:
+Running it against the `BillingMethod` class outputs this enum:
 
 ```typescript
 export enum BillingMethod {
@@ -52,41 +82,59 @@ export enum BillingMethod {
 }
 ```
 
-Apply the script over a folder of TypeScript files by changing the destination to ./constants/\*.ts and we have successfully refactored every enum in our application.
+Viola! Execute the script, refactor every enum.
 
-## Breaking It Down
+## Break it down
 
-Sed’s syntax looks impenetrable if we only pay it a quick glance. However, it only takes about fifteen minutes of experimentation to turn it into one of the most powerful refactoring tools.
+`sed` looks impenetrable if only paid a quick glance. Au contraire, it takes just a few minutes to be dangerous.
 
 Here’s a rundown of the keywords used in the above program:
 
-- `sed`: The name of the executable program (short for stream editor).
+```shell
+sed \
+```
 
-- `\`: A line-continuation character. The above script could’ve been written all in one line —breaking it apart with a backslash provides more readability.
+No surprises here. A shell line-continuation character, `\`, adds readability to the script.
 
-- `-i`: Short for “In File”. If this flag is provided, sed will replace the contents of the files it parses with your edits. By leaving this option off, we can view a “preview” of the edit before it actually affects production code.
+```shell
+-i
+```
 
-- `-e`: Short for “Expression”, provides our edit operation. Since we want to edit the same file multiple times, we use `-e` to provide multiple edits.
+Short for “In File”. Replaces the contents of the input file with the requested edits. Omit to view a preview of the changes.
 
-- `'s/class/enum/'`: The meat of the edit, passed into the `-e` flag. Interpreted as: `'s/<replace this content>/<with this content>/'`. Note that you can specify content as plain text (as I have here), or as a regular expression.
+```shell
+-e 's/class/enum/' \
+```
 
-- `./billing-method.ts`: The file we are editing. This can be also be a directory. For example, `./constants/*.ts` edits all TypeScript files within the `constants/` directory.
+`-e` denotes an expression, after which follows a command. In this example, the `-e` flag is used multiple times to execute multiple commands.
 
-Now let’s look at each of the expressions:
+The specific command used is the [s command](https://www.gnu.org/software/sed/manual/sed.html#The-_0022s_0022-Command), or the substitute command. The syntax reads _'s/replace this content/with this content/'_.
 
-- `‘s/class/enum/’`: Replace `class` with `enum`
+```shell
+./constants/\*.ts
+```
 
-- `‘s/static get //’`: Remove `static get`
+The file(s) to edit. The wildcard operator, `*.ts`, is used to specify every TypeScript file in the directory.
 
-- `‘s/() { return/ =/’` : Replace `() { return` with `=` (with proper spacing)
+Now, onto the expressions themselves:
 
-- `'s/; }/,/'` : Replace `; }` with `,`
+```shell
+# Replace class with enum
+'s/class/enum/'
 
-When sed’s syntax is broken down it is both simple and expressive. Although this is a straightforward use case, it can be applied to a wide variety of code refactorings.
+# Remove "static get "
+'s/static get //'
 
-I hope that this tool will save you as much time as it has for me.
+# Replace "() { return" with "="
+'s/() { return/ =/'
 
-## Further Reading
+# Replace "; }" with ","
+'s/; }/,/'
+```
 
-- [GNU manual](https://www.gnu.org/software/sed/manual/sed.html)
-- [Interactive sed breakdown](https://explainshell.com/explain?cmd=sed+-i+-e+%E2%80%98s%2Fclass%2Fenum%2F%E2%80%99+.%2Fbilling-method.ts)
+## Where next?
+
+That about exhausts my knowledge of `sed`.
+
+For more details on the extensive capabilities of this tool, consult the [GNU manual](https://www.gnu.org/software/sed/manual/sed.html). You can also view an interactive example in [explainshell](https://explainshell.com/explain?cmd=sed+-i+-e+%E2%80%98s%2Fclass%2Fenum%2F%E2%80%99+.%2Fbilling-method.ts).
+
