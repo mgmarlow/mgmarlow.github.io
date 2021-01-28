@@ -9,12 +9,12 @@ import { getPostBySlug, getAllPosts } from '../../lib/blog'
 
 const GlobalStyle = createGlobalStyle`
   .remark-highlight {
-    margin: 1rem -80px;
+    margin: 2rem -80px;
   }
 
-  @media (max-width: 1000px) {
+  @media (max-width: 900px) {
     .remark-highlight {
-      margin: 0 -1rem;
+      margin: 1rem -1rem;
     }
   }
 
