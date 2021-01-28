@@ -1,8 +1,9 @@
 import Link from 'next/link'
+import classnames from 'classnames'
 
-export default function FooterComponent() {
+export default function FooterComponent({ className }) {
   return (
-    <footer className="footer">
+    <footer className={classnames(className, 'footer')}>
       <div className="content has-text-centered">
         <p>
           <Link href="/">

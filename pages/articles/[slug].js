@@ -85,7 +85,7 @@ export default function Post({ content, title, date, readingTime }) {
         </article>
       </Layout>
 
-      <Footer />
+      <Footer className="mt-6" />
     </>
   )
 }

@@ -67,7 +67,7 @@ export default function Articles({ posts }) {
         <List>{postItems}</List>
       </Layout>
 
-      <Footer />
+      <Footer className="mt-6" />
     </>
   )
 }
