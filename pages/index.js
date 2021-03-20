@@ -35,15 +35,13 @@ export default function Home() {
             .
           </P>
           <P>
-            Sometimes I write technical articles for my{' '}
-            <Link href="/articles/" passHref>
-              <Emphasis variant="pink" href="/articles">
-                blog
-              </Emphasis>
-            </Link>
-            . You can also check out what I'm{' '}
-            <Emphasis href="https://techbookclub.dev/" variant="purple">
-              reading
+            Read about game design and philosophy in my{' '}
+            <Emphasis href="https://world.hey.com/mgmarlow" variant="purple">
+              newsletter
+            </Emphasis>
+            , or check out my technical{' '}
+            <Emphasis variant="pink" href="/articles">
+              articles
             </Emphasis>
             .
           </P>
