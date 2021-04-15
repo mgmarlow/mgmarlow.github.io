@@ -32,7 +32,7 @@ const EmphasisLink = styled.a`
     content: '';
     position: absolute;
     z-index: -1;
-    top: 60%;
+    top: 70%;
     left: -0.1em;
     right: -0.1em;
     bottom: 0;
