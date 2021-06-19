@@ -1,6 +1,6 @@
 ---
-title: 'Learn sed, Save Time'
-date: '2018-01-23'
+title: Learn sed, Save Time
+date: 2018-01-23
 ---
 
 `sed` has one of the most understated [introductions](https://www.gnu.org/software/sed/manual/sed.html#Introduction) in the history of linux commands:
@@ -137,4 +137,3 @@ Now, onto the expressions themselves:
 That about exhausts my knowledge of `sed`.
 
 For more details on the extensive capabilities of this tool, consult the [GNU manual](https://www.gnu.org/software/sed/manual/sed.html). You can also view an interactive example in [explainshell](https://explainshell.com/explain?cmd=sed+-i+-e+%E2%80%98s%2Fclass%2Fenum%2F%E2%80%99+.%2Fbilling-method.ts).
-

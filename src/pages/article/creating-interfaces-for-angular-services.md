@@ -1,6 +1,7 @@
 ---
-title: 'Creating Interfaces for Angular Services'
-date: '2017-10-01'
+title: Creating Interfaces for Angular Services
+date: 2017-10-01
+layout: ../../layouts/article.astro
 ---
 
 When dealing with a class that needs access to different data sources depending on its context, it is often useful to model those data sources with a common interface. Likewise in Angular, we may run across situations where an injected service needs to have different implementations depending on its context, a perfect candidate for an interface. However, since interfaces are not compiled into the JavaScript output of TypeScript, achieving this with an Angular service is rather unintuitive.

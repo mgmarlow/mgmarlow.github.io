@@ -1,6 +1,7 @@
 ---
-title: 'Organizing Types in Web Applications'
-date: '2019-04-08'
+title: Organizing Types in Web Applications
+date: 2019-04-08
+layout: ../../layouts/article.astro
 ---
 
 [Flow](https://flow.org/) and [TypeScript](https://www.typescriptlang.org/)

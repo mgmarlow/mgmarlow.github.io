@@ -1,6 +1,7 @@
 ---
-title: 'Creating Themeable Svelte Components'
-date: '2020-04-05'
+title: Creating Themeable Svelte Components
+date: 2020-04-05
+layout: ../../layouts/article.astro
 ---
 
 React makes theming components easy. My preferred way combines

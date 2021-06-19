@@ -1,6 +1,7 @@
 ---
-title: 'Gatsby to Next.js Migration'
-date: '2021-01-18'
+title: Gatsby to Next.js Migration
+date: 2021-01-18
+layout: ../../layouts/article.astro
 ---
 
 I migrated my blog from Gatsby to Next.js to capitalize on all of the Next.js hype, as you do. As blog custom necessitates, this is a log of that migration.
@@ -127,4 +128,3 @@ module.exports = {
 Absolutely. Thanks to the [Next.js migration guide](https://nextjs.org/docs/migrating/from-gatsby), the entire process took me less than a few hours. The result is an application that is easy to understand and even easier to extend.
 
 If nothing else, migrating to Next.js has convinced me that Gatsby's GraphQL infrastructure is over-engineered, especially for blogs. The advantages of a rich plugin ecosystem are outweighed by the sheer number of configuration files dependent on esoteric APIs.
-

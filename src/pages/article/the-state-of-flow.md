@@ -1,6 +1,7 @@
 ---
-title: 'The State of Flow in 2019'
-date: '2019-01-20'
+title: The State of Flow in 2019
+date: 2019-01-20
+layout: ../../layouts/article.astro
 ---
 
 The current state of Facebook's static type checker, [Flow](https://flow.org/),

@@ -1,6 +1,7 @@
 ---
-title: 'Python Virtual Environments for AI/ML'
-date: '2020-03-01'
+title: Python Virtual Environments for AI/ML
+date: 2020-03-01
+layout: ../../layouts/article.astro
 ---
 
 Virtual environments are the bee's knees. With them developers

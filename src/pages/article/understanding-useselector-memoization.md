@@ -1,6 +1,7 @@
 ---
-title: 'Understanding useSelector Memoization'
-date: '2019-08-17'
+title: Understanding useSelector Memoization
+date: 2019-08-17
+layout: ../../layouts/article.astro
 ---
 
 The new react-redux [hooks API](https://react-redux.js.org/next/api/hooks)

@@ -1,6 +1,7 @@
 ---
-title: 'Adaptable Data Stores in Angular'
-date: '2017-09-02'
+title: Adaptable Data Stores in Angular
+date: 2017-09-02
+layout: ../../layouts/article.astro
 ---
 
 Managing state is at the core of client-side development. Recent paradigms have changed the way web applications manipulate and manage their state, transitioning from the two-way data binding mechanisms of AngularJS to the uni-directional flow of React and Redux.
@@ -111,4 +112,3 @@ export class HelloComponent {
 [View the full example here](https://stackblitz.com/edit/angular-pah1j1).
 
 Although this example has only one consumer of `AppState`, you can imagine that any number of components can subscribe to the data store at any given time. With so many components accessing this state, the **data store** paradigm helps minimize surprises by encapsulating it in RxJS primitives.
-
