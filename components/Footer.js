@@ -1,24 +1,11 @@
-import Link from 'next/link'
 import classnames from 'classnames'
+import Link from 'next/link'
+import styled from 'styled-components'
 
-export default function FooterComponent({ className }) {
+function FooterComponent({ className }) {
   return (
     <footer className={classnames(className, 'footer')}>
       <div className="content has-text-centered">
-        <p>
-          <Link href="/">
-            <a>about</a>
-          </Link>{' '}
-          •{' '}
-          <Link href="/articles">
-            <a>articles</a>
-          </Link>{' '}
-          •{' '}
-          <a rel="noreferrer" href="https://github.com/mgmarlow">
-            github
-          </a>
-        </p>
-
         <p>
           <Link href="/">
             <a className="has-text-weight-bold">mgmarlow.com</a>
@@ -30,6 +17,41 @@ export default function FooterComponent({ className }) {
           {'>'}.
         </p>
       </div>
+
+      <div>
+        <div className="columns is-centered">
+          <div className="column is-narrow">
+            <div>
+              <Link href="/">
+                <a>about</a>
+              </Link>
+            </div>
+            <div>
+              <Link href="/articles">
+                <a>articles</a>
+              </Link>
+            </div>
+          </div>
+          <div className="column is-narrow">
+            <div>
+              <a rel="noreferrer" href="https://world.hey.com/mgmarlow">
+                newsletter
+              </a>
+            </div>
+            <div>
+              <a rel="noreferrer" href="https://techbookclub.dev">
+                tech book club
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </footer>
   )
 }
+
+export default styled(FooterComponent)`
+  a {
+    text-decoration: none;
+  }
+`
