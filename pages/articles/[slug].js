@@ -1,11 +1,12 @@
 import remark from 'remark'
-import prism from 'remark-prism'
 import html from 'remark-html'
+import prism from 'remark-prism'
 import styled, { createGlobalStyle } from 'styled-components'
-import Layout from '../../components/Layout'
-import SEO from '../../components/SEO'
 import Footer from '../../components/Footer'
-import { getPostBySlug, getAllPosts } from '../../lib/blog'
+import Layout from '../../components/Layout'
+import Newsletter from '../../components/Newsletter'
+import SEO from '../../components/SEO'
+import { getAllPosts, getPostBySlug } from '../../lib/blog'
 
 const GlobalStyle = createGlobalStyle`
   .remark-highlight {
@@ -83,6 +84,10 @@ export default function Post({ content, title, date, readingTime }) {
             </div>
           </section>
         </article>
+
+        <div className="mt-6">
+          <Newsletter />
+        </div>
       </Layout>
 
       <Footer className="mt-6" />
