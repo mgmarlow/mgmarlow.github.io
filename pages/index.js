@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import SEO from '../components/SEO'
 import Emphasis from '../components/Emphasis'
+import SEO from '../components/SEO'
 
 const Container = styled.div`
   box-sizing: content-box;
@@ -18,7 +18,7 @@ const P = styled.p`
 `
 
 const LINKS = [
-  { variant: 'pink', href: 'https://world.hey.com/mgmarlow', name: 'writing' },
+  { variant: 'pink', href: '/articles', name: 'writing', outbound: false },
   { variant: 'blue', href: 'https://github.com/mgmarlow', name: 'open source' },
   {
     variant: 'purple',
@@ -41,10 +41,10 @@ export default function Home() {
           </P>
 
           <ul>
-            {LINKS.map(({ variant, href, name }) => (
+            {LINKS.map(({ variant, href, name, outbound = true }) => (
               <Li key={name}>
                 <p>
-                  <Emphasis href={href} variant={variant}>
+                  <Emphasis href={href} variant={variant} outbound={outbound}>
                     {name}
                   </Emphasis>
                 </p>

@@ -1,6 +1,23 @@
+import NextLink from 'next/link'
 import styled from 'styled-components'
 
-const EmphasisLink = styled.a`
+const Link = ({ className, href, children, outbound }) => {
+  if (outbound) {
+    return (
+      <a className={className} href={href}>
+        {children}
+      </a>
+    )
+  }
+
+  return (
+    <NextLink href={href}>
+      <a className={className}>{children}</a>
+    </NextLink>
+  )
+}
+
+export default styled(Link)`
   font-size: 1.5rem;
   color: #333;
   z-index: 1;
@@ -39,11 +56,3 @@ const EmphasisLink = styled.a`
     transition: top 200ms cubic-bezier(0, 0.8, 0.13, 1);
   }
 `
-
-export default function Emphasis({ variant, children, href }) {
-  return (
-    <EmphasisLink href={href} variant={variant}>
-      {children}
-    </EmphasisLink>
-  )
-}
